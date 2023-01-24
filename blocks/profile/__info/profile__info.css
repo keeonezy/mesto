@@ -1,0 +1,9 @@
+.profile__info {
+    max-width: 336px;
+    min-height: 73px;
+    display: grid;
+    grid-template-areas:
+    "title button-edit"
+    "subtitle subtitle";
+    gap: 16px 18px;
+}
