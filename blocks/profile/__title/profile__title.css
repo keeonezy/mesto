@@ -6,3 +6,11 @@
     color: #FFFFFF;
     grid-area: title;
 }
+
+@media screen and (max-width: 940px) {
+    .profile__title {
+        font-size: 27px;
+        line-height: 33px;
+        text-align: center;
+    }
+}
