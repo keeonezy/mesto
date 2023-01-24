@@ -1,0 +1,7 @@
+.elements__info {
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 246px;
+    min-height: 23px;
+    display: flex;
+}

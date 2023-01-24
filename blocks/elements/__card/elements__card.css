@@ -1,0 +1,8 @@
+.elements__card {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, fit-content(282px));
+    gap: 20px 17px;
+}
