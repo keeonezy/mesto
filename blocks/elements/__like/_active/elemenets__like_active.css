@@ -1,0 +1,14 @@
+.elements__like_active {
+    margin-left: auto;
+    background: url(../../../images/icon/like-on.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    width: 22px;
+    border: transparent;
+    transition: all 0.5s;
+}
+
+.elements__like_active:hover {
+    opacity: 0.6;
+}
