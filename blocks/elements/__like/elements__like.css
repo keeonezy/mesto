@@ -1,3 +1,12 @@
 .elements__like {
     margin-left: auto;
+    background: url(../../../images/icon/like-off.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.elements__like:hover {
+    opacity: 0.6;
 }
