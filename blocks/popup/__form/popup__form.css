@@ -9,3 +9,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+@media screen and (max-width: 940px) {
+    .popup__form {
+        width: 282px;
+        height: 322px;
+    }
+}

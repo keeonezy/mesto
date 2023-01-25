@@ -3,8 +3,8 @@
     min-height: 73px;
     display: grid;
     grid-template-areas:
-    "title button-edit"
-    "subtitle subtitle";
+        "title button-edit"
+        "subtitle subtitle";
     gap: 8px 18px;
 }
 
