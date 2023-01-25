@@ -4,6 +4,8 @@
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
+    width: 22px;
+    border: transparent;
     transition: all 0.5s;
 }
 

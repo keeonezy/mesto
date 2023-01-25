@@ -24,7 +24,7 @@
                 <div class="profile__info">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <p class="profile__subtitle">Исследователь океана</p>
-                    <button class="profile__button-edit"></button>
+                    <button class="profile__button-edit" type="button"></button>
                 </div>
                 <button class="profile__button-add"></button>
             </section>
@@ -36,7 +36,7 @@
                         <img src="./images/Moscow.jpg" alt="Москва" class="elements__image">
                         <div class="elements__info">
                             <h2 class="elements__title">Москва</h2>
-                            <img src="./images/icon/like-off.svg" alt="Лайк" class="elements__like">
+                            <button class="elements__like"></button>
                         </div>
                     </li>
 
@@ -44,7 +44,7 @@
                         <img src="./images/Cappadocia.jpg" alt="Каппадокия" class="elements__image">
                         <div class="elements__info">
                             <h2 class="elements__title">Каппадокия</h2>
-                            <img src="./images/icon/like-off.svg" alt="Лайк" class="elements__like">
+                            <button class="elements__like"></button>
                         </div>
                     </li>
 
@@ -52,7 +52,7 @@
                         <img src="./images/Orenburg.jpg" alt="Оренбург" class="elements__image">
                         <div class="elements__info">
                             <h2 class="elements__title">Оренбург</h2>
-                            <img src="./images/icon/like-off.svg" alt="Лайк" class="elements__like">
+                            <button class="elements__like"></button>
                         </div>
                     </li>
 
@@ -60,7 +60,7 @@
                         <img src="./images/Crete.jpg" alt="Остров Крит" class="elements__image">
                         <div class="elements__info">
                             <h2 class="elements__title">Остров Крит</h2>
-                            <img src="./images/icon/like-off.svg" alt="Лайк" class="elements__like">
+                            <button class="elements__like"></button>
                         </div>
                     </li>
 
@@ -68,7 +68,7 @@
                         <img src="./images/Saint-Petersburg.jpg" alt="Санкт-Петербург" class="elements__image">
                         <div class="elements__info">
                             <h2 class="elements__title">Санкт-Петербург</h2>
-                            <img src="./images/icon/like-off.svg" alt="Лайк" class="elements__like">
+                            <button class="elements__like"></button>
                         </div>
                     </li>
 
@@ -85,20 +85,20 @@
         </main>
 
         <footer class="footer">
-            <p class="footer__text">© 2020 Mesto Russia</p>
+            <p class="footer__text">© 2023 Mesto Russia</p>
         </footer>
 
-        <section class="popup popup__opened q">
+        <div class="popup">
             <div class="popup__form">
                 <button class="popup__close"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <form action="" class="popup__group">
-                    <input type="text" name="input-name" id="" class="popup__input">
-                    <input type="text" name="input-job" id="" class="popup__input">
+                    <input type="text" name="input-name" id="" class="popup__input" value="Жак-Ив Кусто">
+                    <input type="text" name="input-job" id="" class="popup__input" value="Исследователь океана">
                     <button class="popup__button">Сохранить</button>
                 </form>
             </div>
-        </section>
+        </div>
 
 
     </div>

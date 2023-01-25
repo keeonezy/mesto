@@ -5,7 +5,7 @@
     grid-template-areas:
     "title button-edit"
     "subtitle subtitle";
-    gap: 16px 18px;
+    gap: 8px 18px;
 }
 
 @media screen and (max-width: 940px) {
@@ -14,5 +14,6 @@
         margin-bottom: 36px;
         max-width: 282px;
         min-height: 54px;
+        gap: 8px 10px;
     }
 }
