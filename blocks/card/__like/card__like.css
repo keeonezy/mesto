@@ -1,6 +1,6 @@
-.elements__like_active {
+.card__like {
     margin-left: auto;
-    background: url(../../../images/icon/like-on.svg);
+    background: url(../../../images/icon/like-off.svg);
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
@@ -9,6 +9,6 @@
     transition: all 0.5s;
 }
 
-.elements__like_active:hover {
-    opacity: 0.6;
+.card__like:hover {
+    opacity: 0.5;
 }

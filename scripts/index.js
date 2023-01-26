@@ -6,21 +6,21 @@ let popupGroup = document.querySelector(".popup__group");
 // let popupInput = document.querySelector(".");
 // let popupOpened = document.querySelector(".");
 // let popupTitle = document.querySelector(".");
-nameInput = document.querySelector(".popup__input_name");
-jobInput = document.querySelector(".popup__input_job");
-profileName = document.querySelector(".profile__title");
-profileJob = document.querySelector(".profile__subtitle");
+let nameInput = document.querySelector(".popup__input_name");
+let jobInput = document.querySelector(".popup__input_job");
+let profileName = document.querySelector(".profile__title");
+let profileJob = document.querySelector(".profile__subtitle");
 
 
 
 function openedPopup() {
-    popup.classList.add("popup__opened");
+    popup.classList.add("popup_opened");
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
 }
 
 function closePopup() {
-    popup.classList.remove("popup__opened");
+    popup.classList.remove("popup_opened");
 }
 
 function handleFormSubmit(evt) {

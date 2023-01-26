@@ -26,57 +26,57 @@
                     <p class="profile__subtitle">Исследователь океана</p>
                     <button class="profile__button-edit" type="button"></button>
                 </div>
-                <button class="profile__button-add"></button>
+                <button class="profile__button-add" type="button"></button>
             </section>
 
             <section class="elements">
-                <ul class="elements__card">
+                <ul class="elements__list">
 
-                    <li class="elements__li">
-                        <img src="./images/Moscow.jpg" alt="Москва" class="elements__image">
-                        <div class="elements__info">
-                            <h2 class="elements__title">Москва</h2>
-                            <button class="elements__like"></button>
+                    <li class="card">
+                        <img src="./images/Moscow.jpg" alt="Москва" class="card__image">
+                        <div class="card__info">
+                            <h2 class="card__title">Москва</h2>
+                            <button class="card__like" type="button"></button>
                         </div>
                     </li>
 
-                    <li class="elements__li">
-                        <img src="./images/Cappadocia.jpg" alt="Каппадокия" class="elements__image">
-                        <div class="elements__info">
-                            <h2 class="elements__title">Каппадокия</h2>
-                            <button class="elements__like"></button>
+                    <li class="card">
+                        <img src="./images/Cappadocia.jpg" alt="Каппадокия" class="card__image">
+                        <div class="card__info">
+                            <h2 class="card__title">Каппадокия</h2>
+                            <button class="card__like" type="button"></button>
                         </div>
                     </li>
 
-                    <li class="elements__li">
-                        <img src="./images/Orenburg.jpg" alt="Оренбург" class="elements__image">
-                        <div class="elements__info">
-                            <h2 class="elements__title">Оренбург</h2>
-                            <button class="elements__like"></button>
+                    <li class="card">
+                        <img src="./images/Orenburg.jpg" alt="Оренбург" class="card__image">
+                        <div class="card__info">
+                            <h2 class="card__title">Оренбург</h2>
+                            <button class="card__like" type="button"></button>
                         </div>
                     </li>
 
-                    <li class="elements__li">
-                        <img src="./images/Crete.jpg" alt="Остров Крит" class="elements__image">
-                        <div class="elements__info">
-                            <h2 class="elements__title">Остров Крит</h2>
-                            <button class="elements__like"></button>
+                    <li class="card">
+                        <img src="./images/Crete.jpg" alt="Остров Крит" class="card__image">
+                        <div class="card__info">
+                            <h2 class="card__title">Остров Крит</h2>
+                            <button class="card__like" type="button"></button>
                         </div>
                     </li>
 
-                    <li class="elements__li">
-                        <img src="./images/Saint-Petersburg.jpg" alt="Санкт-Петербург" class="elements__image">
-                        <div class="elements__info">
-                            <h2 class="elements__title">Санкт-Петербург</h2>
-                            <button class="elements__like"></button>
+                    <li class="card">
+                        <img src="./images/Saint-Petersburg.jpg" alt="Санкт-Петербург" class="card__image">
+                        <div class="card__info">
+                            <h2 class="card__title">Санкт-Петербург</h2>
+                            <button class="card__like" type="button"></button>
                         </div>
                     </li>
 
-                    <li class="elements__li">
-                        <img src="./images/Phuket.jpg" alt="Пхукет" class="elements__image">
-                        <div class="elements__info">
-                            <h2 class="elements__title">Пхукет</h2>
-                            <button class="elements__like"></button>
+                    <li class="card">
+                        <img src="./images/Phuket.jpg" alt="Пхукет" class="card__image">
+                        <div class="card__info">
+                            <h2 class="card__title">Пхукет</h2>
+                            <button class="card__like" type="button"></button>
                         </div>
                     </li>
 
@@ -90,14 +90,12 @@
 
         <div class="popup">
             <div class="popup__form">
-                <button class="popup__close"></button>
+                <button class="popup__close" type="button"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form action="" class="popup__group">
-                    <input type="text" name="input-name" id="" class="popup__input popup__input_name"
-                        value="Жак-Ив Кусто">
-                    <input type="text" name="input-job" id="" class="popup__input popup__input_job"
-                        value="Исследователь океана">
-                    <button class="popup__button">Сохранить</button>
+                <form class="popup__group" name="profile">
+                    <input type="text" name="input-name" class="popup__input popup__input_name">
+                    <input type="text" name="input-job" class="popup__input popup__input_job">
+                    <button class="popup__button" type="submit">Сохранить</button>
                 </form>
             </div>
         </div>
