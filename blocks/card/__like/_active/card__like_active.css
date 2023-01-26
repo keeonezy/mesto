@@ -1,5 +1,8 @@
 .card__like_active {
     background: url(../../../../images/icon/like-on.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
 }
 
 .card__like_active:hover {
