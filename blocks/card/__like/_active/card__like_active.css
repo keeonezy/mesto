@@ -1,5 +1,5 @@
 .card__like_active {
-    background: url(../../../images/icon/like-on.svg);
+    background: url(../../../../images/icon/like-on.svg);
 }
 
 .card__like_active:hover {
