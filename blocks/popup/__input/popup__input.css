@@ -1,5 +1,6 @@
 .popup__input {
-    margin-bottom: 26px;
+    margin-bottom: 25px;
+    padding-bottom: 3px;
     width: 100%;
     min-height: 27px;
     border: none;
@@ -13,4 +14,10 @@
 
 .popup__input:last-of-type {
     margin-bottom: 0px;
+}
+
+@media screen and (max-width: 940px) {
+    .popup__input {
+        margin-bottom: 25px;
+    }
 }

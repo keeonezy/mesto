@@ -20,5 +20,6 @@
     .profile__button-edit {
         width: 18px;
         height: 18px;
+        background-size: 8px;
     }
 }
