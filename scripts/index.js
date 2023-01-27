@@ -6,8 +6,8 @@ let popupGroup = document.querySelector(".popup__group");
 // let popupInput = document.querySelector(".");
 // let popupOpened = document.querySelector(".");
 // let popupTitle = document.querySelector(".");
-let nameInput = document.querySelector(".popup__input_name");
-let jobInput = document.querySelector(".popup__input_job");
+let nameInput = document.querySelector(".popup__input_type_name");
+let jobInput = document.querySelector(".popup__input_type_job");
 let profileName = document.querySelector(".profile__title");
 let profileJob = document.querySelector(".profile__subtitle");
 
