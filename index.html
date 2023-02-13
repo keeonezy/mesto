@@ -31,7 +31,8 @@
             <section class="elements">
                 <ul class="elements__list">
 
-                    <li class="card">
+                    <!-- <li class="card">
+                        <button class="card__trash" type="button"></button>
                         <img src="./images/Moscow.jpg" alt="Москва" class="card__image">
                         <div class="card__info">
                             <h2 class="card__title">Москва</h2>
@@ -40,6 +41,7 @@
                     </li>
 
                     <li class="card">
+                        <button class="card__trash" type="button"></button>
                         <img src="./images/Cappadocia.jpg" alt="Каппадокия" class="card__image">
                         <div class="card__info">
                             <h2 class="card__title">Каппадокия</h2>
@@ -48,6 +50,7 @@
                     </li>
 
                     <li class="card">
+                        <button class="card__trash" type="button"></button>
                         <img src="./images/Orenburg.jpg" alt="Оренбург" class="card__image">
                         <div class="card__info">
                             <h2 class="card__title">Оренбург</h2>
@@ -56,6 +59,7 @@
                     </li>
 
                     <li class="card">
+                        <button class="card__trash" type="button"></button>
                         <img src="./images/Crete.jpg" alt="Остров Крит" class="card__image">
                         <div class="card__info">
                             <h2 class="card__title">Остров Крит</h2>
@@ -64,6 +68,7 @@
                     </li>
 
                     <li class="card">
+                        <button class="card__trash" type="button"></button>
                         <img src="./images/Saint-Petersburg.jpg" alt="Санкт-Петербург" class="card__image">
                         <div class="card__info">
                             <h2 class="card__title">Санкт-Петербург</h2>
@@ -72,12 +77,13 @@
                     </li>
 
                     <li class="card">
+                        <button class="card__trash" type="button"></button>
                         <img src="./images/Phuket.jpg" alt="Пхукет" class="card__image">
                         <div class="card__info">
                             <h2 class="card__title">Пхукет</h2>
                             <button class="card__like" type="button"></button>
                         </div>
-                    </li>
+                    </li> -->
 
                 </ul>
             </section>
@@ -100,7 +106,17 @@
         </div>
 
     </div>
-
+    
+    <template id="card-li">
+        <li class="card">
+            <button class="card__trash" type="button"></button>
+            <img src="" alt="Москва" class="card__image">
+            <div class="card__info">
+                <h2 class="card__title"></h2>
+                <button class="card__like" type="button"></button>
+            </div>
+        </li>
+    </template>
     <script src="./scripts/index.js"></script>
 </body>
 
