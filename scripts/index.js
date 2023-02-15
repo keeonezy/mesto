@@ -8,21 +8,12 @@ const buttonClosePopup = document.querySelector(".popup__close");
 const FormEdit = document.forms.editProfile;
 const FormAdd = document.forms.addCard;
 
-// const buttonLike = document.querySelectorAll(".card__like");
-
-// for (let button of buttonLike) {
-//     button.addEventListener('click', function () {
-//       button.classList.toggle('card__like_active');
-//     });
-//   }
-
 // Для работы с инпутами
 const nameInput = document.querySelector(".popup__input_type_name");
 const jobInput = document.querySelector(".popup__input_type_job");
 const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__subtitle");
 
-popupEditProfile.addEventListener("click", handleOverlayClose);
 FormEdit.addEventListener("submit", handleFormSubmit);
 
 // Открытие попапа для редактирование профиля
@@ -46,11 +37,34 @@ function handleFormSubmit(evt) {
 }
 
 // Закрытие попапа за пределами формы
-function handleOverlayClose(evt) {
-    if (evt.target === evt.currentTarget) {
-        handleClosePopup(popupEditProfile);
-    }
-}
+// popupEditProfile.addEventListener("click", handleOverlayClose);
+// popupAddCard.addEventListener("click", handleOverlayClose2);
+
+// function handleOverlayClose(evt) {
+//     if (evt.target === evt.currentTarget) {
+//         handleClosePopup(popupEditProfile);
+//     }
+// }
+
+// function handleOverlayClose2(evt) {
+//     if (evt.target === evt.currentTarget) {
+//         handleClosePopup(popupAddCard);
+//     }
+// }
+
+// Закрытие попапа на крестик и за пределами формы
+const popups = document.querySelectorAll('.popup')
+
+popups.forEach((popup) => {
+    popup.addEventListener('mousedown', (evt) => {
+        if (evt.target.classList.contains('popup_opened')) {
+            handleClosePopup(popup)
+        }
+        if (evt.target.classList.contains('popup__close')) {
+          handleClosePopup(popup)
+        }
+    })
+})
 
 // Открываем попап с добавлением карточки
 buttonAddCard.addEventListener("click", function () {
@@ -97,3 +111,12 @@ const renderItem = (wrap, card) => {
 initialCards.forEach((card) => {
     renderItem(templatePaste, card)
 })
+
+// Лайк карточкам
+const buttonLike = document.querySelectorAll('.card__like');
+
+for (let button of buttonLike) {
+  button.addEventListener('click', function () {
+    button.classList.toggle('card__like_active');
+  });
+}
