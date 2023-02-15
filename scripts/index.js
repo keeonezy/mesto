@@ -5,7 +5,16 @@ const buttonEditProfile = document.querySelector(".profile__button-edit");
 const popupAddCard = document.querySelector(".popup-add-card");
 const buttonAddCard = document.querySelector(".profile__button-add");
 const buttonClosePopup = document.querySelector(".popup__close");
-const popupForm = document.querySelector(".popup__group");
+const FormEdit = document.forms.editProfile;
+const FormAdd = document.forms.addCard;
+
+// const buttonLike = document.querySelectorAll(".card__like");
+
+// for (let button of buttonLike) {
+//     button.addEventListener('click', function () {
+//       button.classList.toggle('card__like_active');
+//     });
+//   }
 
 // Для работы с инпутами
 const nameInput = document.querySelector(".popup__input_type_name");
@@ -14,7 +23,7 @@ const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__subtitle");
 
 popupEditProfile.addEventListener("click", handleOverlayClose);
-popupForm.addEventListener("submit", handleFormSubmit);
+FormEdit.addEventListener("submit", handleFormSubmit);
 
 // Открытие попапа для редактирование профиля
 buttonEditProfile.addEventListener("click", function () {
@@ -48,6 +57,25 @@ buttonAddCard.addEventListener("click", function () {
     popupAddCard.classList.add("popup_opened");
 });
 
+// Добавление новой карточки
+FormAdd.addEventListener("submit", handleFormSubmit2);
+
+function handleFormSubmit2(evt) {
+    evt.preventDefault();
+    const title = FormAdd.elements.inputName.value;
+    const url = FormAdd.elements.inputUrl.value;
+
+    const newCard = template.content.cloneNode(true);
+    const newItem = newCard.querySelector(".card__title");
+    newItem.textContent = title;
+    const addLink = newCard.querySelector(".card__image");
+    addLink.src = url;
+    const newAlt = newCard.querySelector(".card__title").alt = title;
+
+    templatePaste.prepend(newCard);
+    handleClosePopup(popupAddCard);
+}
+
 // Работа с template и массивом
 const template = document.getElementById("card-li");
 const templatePaste = document.querySelector(".elements__list");
@@ -58,6 +86,7 @@ const getCardTemplate = (card) => {
     newItem.textContent = card.name;
     const addLink = newCard.querySelector(".card__image");
     addLink.src = card.link;
+    const newAlt = newCard.querySelector(".card__title").alt = card.name;
     return newCard;
 }
 
