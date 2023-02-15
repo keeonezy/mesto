@@ -4,6 +4,7 @@ const popupEditProfile = document.querySelector(".popup-edit-profile");
 const buttonEditProfile = document.querySelector(".profile__button-edit");
 const popupAddCard = document.querySelector(".popup-add-card");
 const buttonAddCard = document.querySelector(".profile__button-add");
+const popupShowCard = document.querySelector(".popup-show-card");
 const buttonClosePopup = document.querySelector(".popup__close");
 const FormEdit = document.forms.editProfile;
 const FormAdd = document.forms.addCard;
@@ -16,25 +17,24 @@ const profileJob = document.querySelector(".profile__subtitle");
 
 FormEdit.addEventListener("submit", handleFormSubmit);
 
-// Открытие попапа для редактирование профиля
-buttonEditProfile.addEventListener("click", function () {
-    popupEditProfile.classList.add("popup_opened");
-    nameInput.value = profileName.textContent;
-    jobInput.value = profileJob.textContent;
-});
-
 // Функция закрытия попапа универсальная
 function handleClosePopup(poupToClose) {
     poupToClose.classList.remove("popup_opened");
 }
 
-// Отправки формы
-function handleFormSubmit(evt) {
-    evt.preventDefault();
-    profileName.textContent = nameInput.value;
-    profileJob.textContent = jobInput.value;
-    handleClosePopup(popupEditProfile);
-}
+// Закрытие попапа на крестик и за пределами формы
+const popups = document.querySelectorAll('.popup')
+
+popups.forEach((popup) => {
+    popup.addEventListener('mousedown', (evt) => {
+        if (evt.target.classList.contains('popup_opened')) {
+            handleClosePopup(popup)
+        }
+        if (evt.target.classList.contains('popup__close')) {
+            handleClosePopup(popup)
+        }
+    })
+})
 
 // Закрытие попапа за пределами формы
 // popupEditProfile.addEventListener("click", handleOverlayClose);
@@ -52,19 +52,20 @@ function handleFormSubmit(evt) {
 //     }
 // }
 
-// Закрытие попапа на крестик и за пределами формы
-const popups = document.querySelectorAll('.popup')
+// Открытие попапа для редактирование профиля
+buttonEditProfile.addEventListener("click", function () {
+    popupEditProfile.classList.add("popup_opened");
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileJob.textContent;
+});
 
-popups.forEach((popup) => {
-    popup.addEventListener('mousedown', (evt) => {
-        if (evt.target.classList.contains('popup_opened')) {
-            handleClosePopup(popup)
-        }
-        if (evt.target.classList.contains('popup__close')) {
-          handleClosePopup(popup)
-        }
-    })
-})
+// Отправки формы профиля
+function handleFormSubmit(evt) {
+    evt.preventDefault();
+    profileName.textContent = nameInput.value;
+    profileJob.textContent = jobInput.value;
+    handleClosePopup(popupEditProfile);
+}
 
 // Открываем попап с добавлением карточки
 buttonAddCard.addEventListener("click", function () {
@@ -90,7 +91,7 @@ function handleFormSubmit2(evt) {
     handleClosePopup(popupAddCard);
 }
 
-// Работа с template и массивом
+// Работа с template и массивом(вывод карточек)
 const template = document.getElementById("card-li");
 const templatePaste = document.querySelector(".elements__list");
 
@@ -112,11 +113,39 @@ initialCards.forEach((card) => {
     renderItem(templatePaste, card)
 })
 
-// Лайк карточкам
+// Лайк карточкам(код здесь т.к после загрузки карточек только работает)
 const buttonLike = document.querySelectorAll('.card__like');
 
 for (let button of buttonLike) {
-  button.addEventListener('click', function () {
-    button.classList.toggle('card__like_active');
-  });
+    button.addEventListener('click', function () {
+        button.classList.toggle('card__like_active');
+    });
 }
+
+// Удаление карточек
+templatePaste.addEventListener('click', (evt) => {
+    if (evt.target.classList.contains('card__trash')) {
+        const cardElement = event.target.closest('.card');
+        cardElement.remove();
+    }
+});
+
+// Функция открытия попапа
+function openPopup(popup) {
+    popup.classList.add('popup_opened');
+}
+
+// Открытие просмотра окна
+const popupImage = document.querySelector(".popup__image");
+const popupFigcaption = document.querySelector(".popup__figcaption");
+
+
+templatePaste.addEventListener('click', (evt) => {
+    const target = evt.target;
+    if (target.classList.contains('card__image')) {
+        popupImage.src = target.src;
+        popupImage.alt = target.alt;
+        popupFigcaption.textContent = target.alt;
+        openPopup(popupShowCard);
+    }
+});

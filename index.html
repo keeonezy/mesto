@@ -55,15 +55,25 @@
                 <button class="popup__close" type="button"></button>
                 <h2 class="popup__title">Новое место</h2>
                 <form class="popup__group" name="addCard">
-                    <input type="text" placeholder="Название" name="inputName" class="popup__input popup__input_type_name">
-                    <input type="text" placeholder="Ссылка на картинку" name="inputUrl" class="popup__input popup__input_type_url">
+                    <input type="text" placeholder="Название" name="inputName"
+                        class="popup__input popup__input_type_name">
+                    <input type="text" placeholder="Ссылка на картинку" name="inputUrl"
+                        class="popup__input popup__input_type_url">
                     <button class="popup__button" type="submit">Создать</button>
                 </form>
             </div>
         </div>
 
+        <div class="popup popup-show-card">
+            <figure class="popup__images">
+                <button class="popup__close" type="button"></button>
+                <img src="" alt="" class="popup__image">
+                <figcaption class="popup__figcaption"></figcaption>
+            </figure>
+        </div>
+
     </div>
-    
+
     <template id="card-li">
         <li class="card">
             <button class="card__trash" type="button"></button>
