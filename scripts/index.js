@@ -1,86 +1,54 @@
+// Для работы с попапами
 const popup = document.querySelector(".popup");
 const popupEditProfile = document.querySelector(".popup-edit-profile");
-const buttonEdit = document.querySelector(".profile__button-edit");
-const buttonClose = document.querySelector(".popup__close");
+const buttonEditProfile = document.querySelector(".profile__button-edit");
+const popupAddCard = document.querySelector(".popup-add-card");
+const buttonAddCard = document.querySelector(".profile__button-add");
+const buttonClosePopup = document.querySelector(".popup__close");
 const popupForm = document.querySelector(".popup__group");
 
-// Работа с инпутами
+// Для работы с инпутами
 const nameInput = document.querySelector(".popup__input_type_name");
 const jobInput = document.querySelector(".popup__input_type_job");
 const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__subtitle");
 
-
-
 popupEditProfile.addEventListener("click", handleOverlayClose);
-buttonEdit.addEventListener("click", handleOpenedPopup);
-buttonClose.addEventListener("click", handleClosePopup);
 popupForm.addEventListener("submit", handleFormSubmit);
 
-
-
-function handleOpenedPopup() {
+// Открытие попапа для редактирование профиля
+buttonEditProfile.addEventListener("click", function () {
     popupEditProfile.classList.add("popup_opened");
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
+});
+
+// Функция закрытия попапа универсальная
+function handleClosePopup(poupToClose) {
+    poupToClose.classList.remove("popup_opened");
 }
 
-function handleClosePopup() {
-    popupEditProfile.classList.remove("popup_opened");
-}
-
+// Отправки формы
 function handleFormSubmit(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    handleClosePopup();
+    handleClosePopup(popupEditProfile);
 }
 
+// Закрытие попапа за пределами формы
 function handleOverlayClose(evt) {
     if (evt.target === evt.currentTarget) {
-        handleClosePopup();
+        handleClosePopup(popupEditProfile);
     }
 }
 
+// Открываем попап с добавлением карточки
+buttonAddCard.addEventListener("click", function () {
+    popupAddCard.classList.add("popup_opened");
+});
 
-//5 Часть
-// Работа с попапом
-const popupAddCard = document.querySelector(".popup-add-card");
-const addButtonCard = document.querySelector(".profile__button-add");
-addButtonCard.addEventListener("click", handleOpenedPopupCard);
-
-function handleOpenedPopupCard() {
-    popupAddCard.classList.toggle("popup_opened");
-}
-
-//Работа с карточками
-const initialCards = [
-    {
-        name: "Москва",
-        link: "./images/Moscow.jpg"
-    },
-    {
-        name: "Каппадокия",
-        link: "./images/Cappadocia.jpg"
-    },
-    {
-        name: "Оренбург",
-        link: "./images/Orenburg.jpg"
-    },
-    {
-        name: "Остров Крит",
-        link: "./images/Crete.jpg"
-    },
-    {
-        name: "Санкт-Петербург",
-        link: "./images/Saint-Petersburg.jpg"
-    },
-    {
-        name: "Пхукет",
-        link: "./images/Phuket.jpg"
-    }
-];
-
+// Работа с template и массивом
 const template = document.getElementById("card-li");
 const templatePaste = document.querySelector(".elements__list");
 

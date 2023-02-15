@@ -10,7 +10,7 @@
     text-align: center;
     color: #FFFFFF;
     cursor: pointer;
-    transition: all 0.5s;
+    transition: opacity 0.5s;
 }
 
 .popup__button:hover {
