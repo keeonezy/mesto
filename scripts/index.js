@@ -18,8 +18,8 @@ const profileJob = document.querySelector(".profile__subtitle");
 FormEdit.addEventListener("submit", handleFormSubmit);
 
 // Функция закрытия попапа универсальная
-function handleClosePopup(poupToClose) {
-    poupToClose.classList.remove("popup_opened");
+function handleClosePopup(popupToClose) {
+    popupToClose.classList.remove("popup_opened");
 }
 
 // Закрытие попапа на крестик и за пределами формы
@@ -85,7 +85,7 @@ function handleFormSubmit2(evt) {
     newItem.textContent = title;
     const addLink = newCard.querySelector(".card__image");
     addLink.src = url;
-    const newAlt = newCard.querySelector(".card__title").alt = title;
+    const newAlt = newCard.querySelector(".card__image").alt = title;
 
     templatePaste.prepend(newCard);
     handleClosePopup(popupAddCard);
@@ -101,7 +101,7 @@ const getCardTemplate = (card) => {
     newItem.textContent = card.name;
     const addLink = newCard.querySelector(".card__image");
     addLink.src = card.link;
-    const newAlt = newCard.querySelector(".card__title").alt = card.name;
+    addLink.alt = card.name;
     return newCard;
 }
 
@@ -125,7 +125,7 @@ for (let button of buttonLike) {
 // Удаление карточек
 templatePaste.addEventListener('click', (evt) => {
     if (evt.target.classList.contains('card__trash')) {
-        const cardElement = event.target.closest('.card');
+        const cardElement = evt.target.closest('.card');
         cardElement.remove();
     }
 });
@@ -135,10 +135,9 @@ function openPopup(popup) {
     popup.classList.add('popup_opened');
 }
 
-// Открытие просмотра окна
+// Открытие попапа с карточкой
 const popupImage = document.querySelector(".popup__image");
 const popupFigcaption = document.querySelector(".popup__figcaption");
-
 
 templatePaste.addEventListener('click', (evt) => {
     const target = evt.target;
