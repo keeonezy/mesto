@@ -104,8 +104,8 @@ formAddCard.addEventListener("submit", handleFormAddCardSubmit);
 
 function handleFormAddCardSubmit(evt) {
     evt.preventDefault();
-    const title = FormAdd.elements.inputName.value;
-    const url = FormAdd.elements.inputUrl.value;
+    const title = formAddCard.elements.inputName.value;
+    const url = formAddCard.elements.inputUrl.value;
 
     const newCard = template.content.cloneNode(true);
     const newItem = newCard.querySelector(".card__title");
