@@ -77,14 +77,14 @@ const getCardTemplate = (card) => {
         };
     });
 
-    // Лайк карточкам
+    // Поставить или убрать карточки лайк
     const buttonLike = newCard.querySelector(".card__like");
 
     buttonLike.addEventListener("click", function () {
         buttonLike.classList.toggle('card__like_active');
     });
 
-    // Открытие попапа с карточкой
+    // popup открытие с просмотром карточки
     const viewImage = newCard.querySelector(".card__image");
 
     viewImage.addEventListener("click", () => {
@@ -97,10 +97,11 @@ const getCardTemplate = (card) => {
     return newCard;
 };
 
+// Показываем карточки
 initialCards.forEach(card => {
     const newCard = getCardTemplate(card);
     templatePaste.prepend(newCard);
-  });
+});
 
 // Добавление новой карточки
 function handleFormAddCardSubmit(evt) {
