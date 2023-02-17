@@ -15,12 +15,7 @@ const jobInput = document.querySelector(".popup__input_type_job");
 const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__subtitle");
 
-formEditProfile.addEventListener("submit", handleFormSubmit);
-
-// Функция открытия попапа
-function openPopup(popup) {
-    popup.classList.add('popup_opened');
-};
+formEditProfile.addEventListener("submit", handleFormEditProfileSubmit);
 
 // Функция закрытия попапа универсальная
 function handleClosePopup(popupToClose) {
@@ -41,6 +36,27 @@ popups.forEach((popup) => {
     });
 });
 
+// Закрытие попапа за пределами формы
+// popupEditProfile.addEventListener("click", handleOverlayClose);
+// popupAddCard.addEventListener("click", handleOverlayClose2);
+
+// function handleOverlayClose(evt) {
+//     if (evt.target === evt.currentTarget) {
+//         handleClosePopup(popupEditProfile);
+//     }
+// }
+
+// function handleOverlayClose2(evt) {
+//     if (evt.target === evt.currentTarget) {
+//         handleClosePopup(popupAddCard);
+//     }
+// }
+
+// Функция открытия попапа
+function openPopup(popup) {
+    popup.classList.add('popup_opened');
+};
+
 // Открытие попапа для редактирование профиля
 buttonEditProfile.addEventListener("click", function () {
     openPopup(popupEditProfile);
@@ -49,7 +65,7 @@ buttonEditProfile.addEventListener("click", function () {
 });
 
 // Отправки формы профиля
-function handleFormSubmit(evt) {
+function handleFormEditProfileSubmit(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
@@ -84,12 +100,12 @@ initialCards.forEach((card) => {
 });
 
 // Добавление новой карточки
-formAddCard.addEventListener("submit", handleFormSubmit2);
+formAddCard.addEventListener("submit", handleFormAddCardSubmit);
 
-function handleFormSubmit2(evt) {
+function handleFormAddCardSubmit(evt) {
     evt.preventDefault();
-    const title = formAddCard.elements.inputName.value;
-    const url = formAddCard.elements.inputUrl.value;
+    const title = FormAdd.elements.inputName.value;
+    const url = FormAdd.elements.inputUrl.value;
 
     const newCard = template.content.cloneNode(true);
     const newItem = newCard.querySelector(".card__title");
@@ -100,6 +116,7 @@ function handleFormSubmit2(evt) {
 
     templatePaste.prepend(newCard);
     handleClosePopup(popupAddCard);
+    formAddCard.reset();
 };
 
 // Лайк карточкам(код здесь т.к после загрузки карточек только работает)
