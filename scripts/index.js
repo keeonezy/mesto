@@ -69,12 +69,12 @@ const getCardTemplate = (card) => {
     const addAltImage = newCard.querySelector(".card__image").alt = card.name;
     const addLinkImage = newCard.querySelector(".card__image").src = card.link;
 
-    // Удаление карточек
+    // Удаление карточки
     buttonDeleteCard = newCard.querySelector(".card__trash");
 
-    buttonDeleteCard.addEventListener("click", function (evt) {
-        evt.target.closest('.card').remove();
-    })
+    buttonDeleteCard.addEventListener("click", function () {
+        this.closest('.card').remove();
+    });
 
     // Поставить или убрать карточки лайк
     const buttonLike = newCard.querySelector(".card__like");
