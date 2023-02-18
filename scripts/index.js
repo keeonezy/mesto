@@ -15,7 +15,7 @@ const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__subtitle");
 //Template
 const template = document.getElementById("card-li");
-const templatePaste = document.querySelector(".elements__list");
+const cardList = document.querySelector(".elements__list");
 // Инпуты
 const nameInput = document.querySelector(".popup__input_type_name");
 const jobInput = document.querySelector(".popup__input_type_job");
@@ -70,12 +70,11 @@ const getCardTemplate = (card) => {
     const addLinkImage = newCard.querySelector(".card__image").src = card.link;
 
     // Удаление карточек
-    templatePaste.addEventListener("click", (evt) => {
-        if (evt.target.classList.contains("card__trash")) {
-            const cardElement = evt.target.closest(".card");
-            cardElement.remove();
-        };
-    });
+    buttonDeleteCard = newCard.querySelector(".card__trash");
+
+    buttonDeleteCard.addEventListener("click", function (evt) {
+        evt.target.closest('.card').remove();
+    })
 
     // Поставить или убрать карточки лайк
     const buttonLike = newCard.querySelector(".card__like");
@@ -100,7 +99,7 @@ const getCardTemplate = (card) => {
 // Показываем карточки
 initialCards.forEach(card => {
     const newCard = getCardTemplate(card);
-    templatePaste.prepend(newCard);
+    cardList.prepend(newCard);
 });
 
 // Добавление новой карточки
@@ -116,7 +115,7 @@ function handleFormAddCardSubmit(evt) {
 
     const newCard = getCardTemplate(card);
 
-    templatePaste.prepend(newCard);
+    cardList.prepend(newCard);
     handleClosePopup(popupAddCard);
     formAddCard.reset();
 };
