@@ -23,24 +23,35 @@ const jobInput = document.querySelector(".popup__input_type_job");
 // Функция открытия попапа
 function openPopup(popup) {
     popup.classList.add("popup_opened");
+    document.addEventListener('keydown', handlerKeyEscape);
 };
 
 // Функция закрытия попапа универсальная
-function handleClosePopup(popupToClose) {
+function handlerClosePopup(popupToClose) {
     popupToClose.classList.remove("popup_opened");
+    document.removeEventListener('keydown', handlerKeyEscape);
 };
 
 // Закрытие попапа на крестик и за пределами формы
 popups.forEach((popup) => {
     popup.addEventListener("mousedown", (evt) => {
         if (evt.target.classList.contains("popup_opened")) {
-            handleClosePopup(popup);
+            handlerClosePopup(popup);
         };
         if (evt.target.classList.contains("popup__close")) {
-            handleClosePopup(popup);
+            handlerClosePopup(popup);
         };
     });
+
 });
+
+// Закрытие попапа через кнопку ESQ
+function handlerKeyEscape(evt) {
+    if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened');
+        handlerClosePopup(openedPopup);
+    }
+}
 
 // Popup открытие для редактирования профиля
 buttonEditProfile.addEventListener("click", function () {
@@ -50,11 +61,11 @@ buttonEditProfile.addEventListener("click", function () {
 });
 
 // Отправки формы профиля
-function handleFormEditProfileSubmit(evt) {
+function handlerFormEditProfileSubmit(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    handleClosePopup(popupEditProfile);
+    handlerClosePopup(popupEditProfile);
 };
 
 // Popup открытие для добавления карточки
@@ -103,7 +114,7 @@ initialCards.forEach(card => {
 });
 
 // Добавление новой карточки
-function handleFormAddCardSubmit(evt) {
+function handlerFormAddCardSubmit(evt) {
     evt.preventDefault();
     const title = formAddCard.elements.inputName.value;
     const url = formAddCard.elements.inputUrl.value;
@@ -116,9 +127,9 @@ function handleFormAddCardSubmit(evt) {
     const newCard = getCardTemplate(card);
 
     cardList.prepend(newCard);
-    handleClosePopup(popupAddCard);
+    handlerClosePopup(popupAddCard);
     formAddCard.reset();
 };
 
-formEditProfile.addEventListener("submit", handleFormEditProfileSubmit);
-formAddCard.addEventListener("submit", handleFormAddCardSubmit);
+formEditProfile.addEventListener("submit", handlerFormEditProfileSubmit);
+formAddCard.addEventListener("submit", handlerFormAddCardSubmit);
