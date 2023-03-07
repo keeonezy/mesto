@@ -1,5 +1,4 @@
 // Переменные основные
-const popup = document.querySelector(".popup");
 const popups = document.querySelectorAll(".popup");
 const popupEditProfile = document.querySelector(".popup-edit-profile");
 const buttonEditProfile = document.querySelector(".profile__button-edit");
@@ -107,10 +106,15 @@ const getCardTemplate = (card) => {
     return newCard;
 };
 
+// Рендер каточки
+function renderCard(card) {
+    cardList.prepend(card);
+}
+
 // Показываем карточки
 initialCards.forEach(card => {
     const newCard = getCardTemplate(card);
-    cardList.prepend(newCard);
+    renderCard(newCard);
 });
 
 // Добавление новой карточки
@@ -126,9 +130,12 @@ function handlerFormAddCardSubmit(evt) {
 
     const newCard = getCardTemplate(card);
 
-    cardList.prepend(newCard);
+    renderCard(newCard);
     handlerClosePopup(popupAddCard);
     formAddCard.reset();
+
+    const submitElement = formAddCard.querySelector(validationOptions.submitButtonSelector);
+    disableButton(submitElement, validationOptions.disabledButtonClass);
 };
 
 formEditProfile.addEventListener("submit", handlerFormEditProfileSubmit);
