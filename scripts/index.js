@@ -133,3 +133,16 @@ function handlerFormAddCardSubmit(evt) {
 
 formEditProfile.addEventListener("submit", handlerFormEditProfileSubmit);
 formAddCard.addEventListener("submit", handlerFormAddCardSubmit);
+
+// Получения данных для API
+const validationOptions = {
+    formSelector: '.popup__group', // Form класс
+    inputSelector: '.popup__input', // Input класс
+    submitButtonSelector: '.popup__button', // Button класс
+    inputSectionSelector: '.popup__section', // Input + error
+    disabledButtonClass: 'popup__button_disabled', // Button состояния выключения
+    inputErrorSelector: '.popup__error', // Error куда выводить
+    inputErrorClass: 'popup__error_active', // Error активация
+};
+
+enableValidation(validationOptions);
