@@ -10,6 +10,7 @@ const popupImage = document.querySelector(".popup__image");
 const popupFigcaption = document.querySelector(".popup__figcaption");
 const formEditProfile = document.forms.editProfile;
 const formAddCard = document.forms.addCard;
+const submitElement = formAddCard.querySelector(".popup__button");
 const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__subtitle");
 //Template
@@ -133,13 +134,13 @@ function handlerFormAddCardSubmit(evt) {
     renderCard(newCard);
     handlerClosePopup(popupAddCard);
     formAddCard.reset();
-
-    const submitElement = formAddCard.querySelector(validationOptions.submitButtonSelector);
     disableButton(submitElement, validationOptions.disabledButtonClass);
 };
 
+
 formEditProfile.addEventListener("submit", handlerFormEditProfileSubmit);
 formAddCard.addEventListener("submit", handlerFormAddCardSubmit);
+
 
 // Получения данных для API
 const validationOptions = {
