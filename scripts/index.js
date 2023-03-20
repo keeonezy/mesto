@@ -1,5 +1,4 @@
-import { initialCards } from "./Card.js";
-import { hiddenError, showError, setInputState, toggleInputState, enableButton, disableButton, toggleButtonState, setEventListeners, enableValidation } from "./FormValidator.js";
+import { disableButton, enableValidation } from "./FormValidator.js";
 
 // Переменные основные
 const popups = document.querySelectorAll(".popup");
@@ -22,6 +21,33 @@ const cardList = document.querySelector(".elements__list");
 // Инпуты
 const nameInput = document.querySelector(".popup__input_type_name");
 const jobInput = document.querySelector(".popup__input_type_job");
+
+const initialCards = [
+    {
+        name: "Москва",
+        link: "./images/Moscow.jpg"
+    },
+    {
+        name: "Каппадокия",
+        link: "./images/Cappadocia.jpg"
+    },
+    {
+        name: "Оренбург",
+        link: "./images/Orenburg.jpg"
+    },
+    {
+        name: "Остров Крит",
+        link: "./images/Crete.jpg"
+    },
+    {
+        name: "Санкт-Петербург",
+        link: "./images/Saint-Petersburg.jpg"
+    },
+    {
+        name: "Пхукет",
+        link: "./images/Phuket.jpg"
+    }
+];
 
 // Функция открытия попапа
 function openPopup(popup) {

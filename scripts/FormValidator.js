@@ -1,3 +1,5 @@
+export { enableButton, enableValidation };
+
 const hiddenError = (errorElement, inputErrorClass) => {
     errorElement.innerText = '';
     errorElement.classList.remove(inputErrorClass);
@@ -65,5 +67,3 @@ const enableValidation = (options) => {
         setEventListeners(form, options);
     });
 };
-
-export { hiddenError, showError, setInputState, toggleInputState, enableButton, disableButton, toggleButtonState, setEventListeners, enableValidation };
