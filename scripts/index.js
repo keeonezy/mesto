@@ -1,3 +1,6 @@
+import { initialCards } from "./Card.js";
+import { hiddenError, showError, setInputState, toggleInputState, enableButton, disableButton, toggleButtonState, setEventListeners, enableValidation } from "./FormValidator.js";
+
 // Переменные основные
 const popups = document.querySelectorAll(".popup");
 const popupEditProfile = document.querySelector(".popup-edit-profile");
@@ -81,7 +84,7 @@ const getCardTemplate = (card) => {
     const addLinkImage = newCard.querySelector(".card__image").src = card.link;
 
     // Удаление карточки
-    buttonDeleteCard = newCard.querySelector(".card__trash");
+    const buttonDeleteCard = newCard.querySelector(".card__trash");
 
     buttonDeleteCard.addEventListener("click", function () {
         this.closest('.card').remove();

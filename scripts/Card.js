@@ -25,3 +25,5 @@ const initialCards = [
         link: "./images/Phuket.jpg"
     }
 ];
+
+export { initialCards };

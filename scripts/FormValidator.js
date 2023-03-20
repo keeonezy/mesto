@@ -65,3 +65,5 @@ const enableValidation = (options) => {
         setEventListeners(form, options);
     });
 };
+
+export { hiddenError, showError, setInputState, toggleInputState, enableButton, disableButton, toggleButtonState, setEventListeners, enableValidation };
