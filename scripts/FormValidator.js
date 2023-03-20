@@ -1,4 +1,4 @@
-export { enableButton, enableValidation };
+export { disableButton, enableValidation };
 
 const hiddenError = (errorElement, inputErrorClass) => {
     errorElement.innerText = '';
