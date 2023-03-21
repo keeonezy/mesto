@@ -1,6 +1,6 @@
 import { popupShowCard, openPopup } from "./index.js";
 
-export { Card };
+export { Card }
 
 class Card {
     constructor(data, templateSelector) {
@@ -30,6 +30,7 @@ class Card {
     }
 
     _setEventListeners() {
+
         this._buttonLike.addEventListener("click", () => this._handleLikeButton());
         this._deleteButton.addEventListener("click", () => this._handleDeleteButton());
         this._imageViewer.addEventListener("click", () => this._handleImageViewer());
@@ -37,10 +38,10 @@ class Card {
 
     createCard() {
         this._cardElement = this._getTemplate();
-        this._imageElement = this._cardElement.querySelector(".card__image");
         this._captionElement = this._cardElement.querySelector(".card__title");
         this._buttonLike = this._cardElement.querySelector(".card__like");
         this._deleteButton = this._cardElement.querySelector(".card__trash");
+        this._imageElement = this._cardElement.querySelector(".card__image");
         this._imageViewer = this._imageElement;
         this._popupImage = popupShowCard.querySelector(".popup__image");
         this._popupFigcaption = popupShowCard.querySelector(".popup__figcaption");
