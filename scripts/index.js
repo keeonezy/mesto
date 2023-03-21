@@ -1,4 +1,7 @@
+export { popupShowCard, openPopup };
+
 import { disableButton, enableValidation } from "./FormValidator.js";
+import { Card } from "./Card.js";
 
 // Переменные основные
 const popups = document.querySelectorAll(".popup");
@@ -52,13 +55,13 @@ const initialCards = [
 // Функция открытия попапа
 function openPopup(popup) {
     popup.classList.add("popup_opened");
-    document.addEventListener('keydown', handlerKeyEscape);
+    document.addEventListener("keydown", handlerKeyEscape);
 };
 
 // Функция закрытия попапа универсальная
 function handlerClosePopup(popupToClose) {
     popupToClose.classList.remove("popup_opened");
-    document.removeEventListener('keydown', handlerKeyEscape);
+    document.removeEventListener("keydown", handlerKeyEscape);
 };
 
 // Закрытие попапа на крестик и за пределами формы
@@ -76,8 +79,8 @@ popups.forEach((popup) => {
 
 // Закрытие попапа через кнопку ESQ
 function handlerKeyEscape(evt) {
-    if (evt.key === 'Escape') {
-        const openedPopup = document.querySelector('.popup_opened');
+    if (evt.key === "Escape") {
+        const openedPopup = document.querySelector(".popup_opened");
         handlerClosePopup(openedPopup);
     }
 }
@@ -103,38 +106,38 @@ buttonAddCard.addEventListener("click", function () {
 });
 
 // Вывод массив карточек cards.js и не только
-const getCardTemplate = (card) => {
-    const newCard = template.content.cloneNode(true);
-    const newItem = newCard.querySelector(".card__title").textContent = card.name;
-    const addAltImage = newCard.querySelector(".card__image").alt = card.name;
-    const addLinkImage = newCard.querySelector(".card__image").src = card.link;
+// const getCardTemplate = (card) => {
+//     const newCard = template.content.cloneNode(true);
+//     const newItem = newCard.querySelector(".card__title").textContent = card.name;
+//     const addAltImage = newCard.querySelector(".card__image").alt = card.name;
+//     const addLinkImage = newCard.querySelector(".card__image").src = card.link;
 
-    // Удаление карточки
-    const buttonDeleteCard = newCard.querySelector(".card__trash");
+//     // Удаление карточки
+//     const buttonDeleteCard = newCard.querySelector(".card__trash");
 
-    buttonDeleteCard.addEventListener("click", function () {
-        this.closest('.card').remove();
-    });
+//     buttonDeleteCard.addEventListener("click", function () {
+//         this.closest(".card").remove();
+//     });
 
-    // Поставить или убрать карточки лайк
-    const buttonLike = newCard.querySelector(".card__like");
+//     // Поставить или убрать карточки лайк
+//     const buttonLike = newCard.querySelector(".card__like");
 
-    buttonLike.addEventListener("click", function () {
-        buttonLike.classList.toggle('card__like_active');
-    });
+//     buttonLike.addEventListener("click", function () {
+//         buttonLike.classList.toggle("card__like_active");
+//     });
 
-    // popup открытие с просмотром карточки
-    const viewImage = newCard.querySelector(".card__image");
+//     // popup открытие с просмотром карточки
+//     const viewImage = newCard.querySelector(".card__image");
 
-    viewImage.addEventListener("click", () => {
-        popupImage.src = card.link;
-        popupImage.alt = card.name;
-        popupFigcaption.textContent = card.name;
-        openPopup(popupShowCard);
-    });
+//     viewImage.addEventListener("click", () => {
+//         popupImage.src = card.link;
+//         popupImage.alt = card.name;
+//         popupFigcaption.textContent = card.name;
+//         openPopup(popupShowCard);
+//     });
 
-    return newCard;
-};
+//     return newCard;
+// };
 
 // Рендер каточки
 function renderCard(card) {
@@ -143,7 +146,7 @@ function renderCard(card) {
 
 // Показываем карточки
 initialCards.forEach(card => {
-    const newCard = getCardTemplate(card);
+    const newCard = new Card(card, "card-li").createCard();
     renderCard(newCard);
 });
 
@@ -158,7 +161,7 @@ function handlerFormAddCardSubmit(evt) {
         link: url,
     };
 
-    const newCard = getCardTemplate(card);
+    const newCard = new Card(card, "card-li").createCard();
 
     renderCard(newCard);
     handlerClosePopup(popupAddCard);
@@ -173,13 +176,13 @@ formAddCard.addEventListener("submit", handlerFormAddCardSubmit);
 
 // Получения данных для API
 const validationOptions = {
-    formSelector: '.popup__group', // Form класс
-    inputSelector: '.popup__input', // Input класс
-    submitButtonSelector: '.popup__button', // Button класс
-    inputSectionSelector: '.popup__section', // Input + error
-    disabledButtonClass: 'popup__button_disabled', // Button состояния выключения
-    inputErrorSelector: '.popup__error', // Error куда выводить
-    inputErrorClass: 'popup__error_active', // Error активация
+    formSelector: ".popup__group", // Form класс
+    inputSelector: ".popup__input", // Input класс
+    submitButtonSelector: ".popup__button", // Button класс
+    inputSectionSelector: ".popup__section", // Input + error
+    disabledButtonClass: "popup__button_disabled", // Button состояния выключения
+    inputErrorSelector: ".popup__error", // Error куда выводить
+    inputErrorClass: "popup__error_active", // Error активация
 };
 
 enableValidation(validationOptions);
