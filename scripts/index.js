@@ -1,6 +1,6 @@
 export { popupShowCard, openPopup };
 
-import { disableButton, enableValidation } from "./FormValidator.js";
+import { FormValidator } from "./FormValidator.js";
 import { Card } from "./Card.js";
 
 // Переменные основные
@@ -105,41 +105,7 @@ buttonAddCard.addEventListener("click", function () {
     openPopup(popupAddCard);
 });
 
-// Вывод массив карточек cards.js и не только
-// const getCardTemplate = (card) => {
-//     const newCard = template.content.cloneNode(true);
-//     const newItem = newCard.querySelector(".card__title").textContent = card.name;
-//     const addAltImage = newCard.querySelector(".card__image").alt = card.name;
-//     const addLinkImage = newCard.querySelector(".card__image").src = card.link;
-
-//     // Удаление карточки
-//     const buttonDeleteCard = newCard.querySelector(".card__trash");
-
-//     buttonDeleteCard.addEventListener("click", function () {
-//         this.closest(".card").remove();
-//     });
-
-//     // Поставить или убрать карточки лайк
-//     const buttonLike = newCard.querySelector(".card__like");
-
-//     buttonLike.addEventListener("click", function () {
-//         buttonLike.classList.toggle("card__like_active");
-//     });
-
-//     // popup открытие с просмотром карточки
-//     const viewImage = newCard.querySelector(".card__image");
-
-//     viewImage.addEventListener("click", () => {
-//         popupImage.src = card.link;
-//         popupImage.alt = card.name;
-//         popupFigcaption.textContent = card.name;
-//         openPopup(popupShowCard);
-//     });
-
-//     return newCard;
-// };
-
-// Рендер каточки
+// Рендер карточки
 function renderCard(card) {
     cardList.prepend(card);
 }
@@ -166,7 +132,9 @@ function handlerFormAddCardSubmit(evt) {
     renderCard(newCard);
     handlerClosePopup(popupAddCard);
     formAddCard.reset();
-    disableButton(submitElement, validationOptions.disabledButtonClass);
+    // disableButton(submitElement, validationOptions.disabledButtonClass);
+    const disableButtonPopup = new FormValidator(submitElement, validationOptions);
+    disableButtonPopup.disableButton();
 };
 
 
@@ -185,4 +153,6 @@ const validationOptions = {
     inputErrorClass: "popup__error_active", // Error активация
 };
 
-enableValidation(validationOptions);
+// enableValidation(validationOptions);
+const addCardFormValidator = new FormValidator(formAddCard, validationOptions);
+addCardFormValidator.enableValidation();
