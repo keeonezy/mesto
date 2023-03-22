@@ -1,7 +1,6 @@
-export { popupShowCard, openPopup };
-
 import { FormValidator } from "./FormValidator.js";
 import { Card } from "./Card.js";
+import { initialCards } from "./constants.js";
 
 // Переменные основные
 const popups = document.querySelectorAll(".popup");
@@ -24,33 +23,6 @@ const cardList = document.querySelector(".elements__list");
 // Инпуты
 const nameInput = document.querySelector(".popup__input_type_name");
 const jobInput = document.querySelector(".popup__input_type_job");
-
-const initialCards = [
-    {
-        name: "Москва",
-        link: "./images/Moscow.jpg"
-    },
-    {
-        name: "Каппадокия",
-        link: "./images/Cappadocia.jpg"
-    },
-    {
-        name: "Оренбург",
-        link: "./images/Orenburg.jpg"
-    },
-    {
-        name: "Остров Крит",
-        link: "./images/Crete.jpg"
-    },
-    {
-        name: "Санкт-Петербург",
-        link: "./images/Saint-Petersburg.jpg"
-    },
-    {
-        name: "Пхукет",
-        link: "./images/Phuket.jpg"
-    }
-];
 
 // Функция открытия попапа
 function openPopup(popup) {
@@ -112,7 +84,7 @@ function renderCard(card) {
 
 // Показываем карточки
 initialCards.forEach(card => {
-    const newCard = new Card(card, "card-li").createCard();
+    const newCard = new Card(card, ".card-li").createCard();
     renderCard(newCard);
 });
 
@@ -127,12 +99,12 @@ function handlerFormAddCardSubmit(evt) {
         link: url,
     };
 
-    const newCard = new Card(card, "card-li").createCard();
+    const newCard = new Card(card, ".card-li").createCard();
 
     renderCard(newCard);
     handlerClosePopup(popupAddCard);
     formAddCard.reset();
-    // disableButton(submitElement, validationOptions.disabledButtonClass);
+
     const disableButtonPopup = new FormValidator(submitElement, validationOptions);
     disableButtonPopup.disableButton();
 };
@@ -140,7 +112,6 @@ function handlerFormAddCardSubmit(evt) {
 
 formEditProfile.addEventListener("submit", handlerFormEditProfileSubmit);
 formAddCard.addEventListener("submit", handlerFormAddCardSubmit);
-
 
 // Получения данных для API
 const validationOptions = {
@@ -153,6 +124,7 @@ const validationOptions = {
     inputErrorClass: "popup__error_active", // Error активация
 };
 
-// enableValidation(validationOptions);
 const addCardFormValidator = new FormValidator(formAddCard, validationOptions);
 addCardFormValidator.enableValidation();
+
+export { formAddCard, popupShowCard, openPopup };

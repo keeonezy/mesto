@@ -8,7 +8,7 @@
 
 **Технологии используемые**
 
-* HTML, CSS, BEM, GIT, JavaScript
+* HTML, CSS, BEM, GIT, JavaScript(ООП, ES6 Modules)
 
 
 **Gh pages**
