@@ -4,14 +4,11 @@ import { initialCards } from "./constants.js";
 
 // Переменные основные
 const popups = document.querySelectorAll(".popup");
-const popupEditProfile = document.querySelector(".popup-edit-profile");
 const buttonEditProfile = document.querySelector(".profile__button-edit");
-const popupAddCard = document.querySelector(".popup-add-card");
 const buttonAddCard = document.querySelector(".profile__button-add");
-const popupShowCard = document.querySelector(".popup-show-card");
-const buttonClosePopup = document.querySelector(".popup__close");
-const popupImage = document.querySelector(".popup__image");
-const popupFigcaption = document.querySelector(".popup__figcaption");
+const popupEditProfile = document.querySelector(".popup__content_edit-profile");
+const popupAddCard = document.querySelector(".popup__content_add-card");
+const popupShowCard = document.querySelector(".popup__content_show-image");
 const formEditProfile = document.forms.editProfile;
 const formAddCard = document.forms.addCard;
 const submitElement = formAddCard.querySelector(".popup__button");

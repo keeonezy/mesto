@@ -12,6 +12,9 @@ class FormValidator {
     _showError = (errorElement, message, inputErrorClass) => {
         errorElement.innerText = message;
         errorElement.classList.add(inputErrorClass);
+
+        const input1 = document.querySelector(".popup__group").closest("popup__input");
+        input1.classList.add("popup__input_error");
     };
 
     _setInputState = (inputElement, isValid) => {
