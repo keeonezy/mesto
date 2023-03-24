@@ -38,8 +38,7 @@ popups.forEach((popup) => {
     popup.addEventListener("mousedown", (evt) => {
         if (evt.target.classList.contains("popup_opened")) {
             handlerClosePopup(popup);
-        };
-        if (evt.target.classList.contains("popup__close")) {
+        } else if (evt.target.classList.contains("popup__close")) {
             handlerClosePopup(popup);
         };
     });
@@ -74,15 +73,14 @@ buttonAddCard.addEventListener("click", function () {
     openPopup(popupAddCard);
 });
 
-// Рендер карточки
-function renderCard(card) {
-    cardList.prepend(card);
+function createCard(card) {
+    const newCard = new Card(card, '.card-li', openPopup).createCard();
+    return newCard
 }
 
 // Показываем карточки
 initialCards.forEach(card => {
-    const newCard = new Card(card, ".card-li").createCard();
-    renderCard(newCard);
+    cardList.prepend(createCard(card));
 });
 
 // Добавление новой карточки
@@ -96,9 +94,8 @@ function handlerFormAddCardSubmit(evt) {
         link: url,
     };
 
-    const newCard = new Card(card, ".card-li").createCard();
+    cardList.prepend(createCard(card));
 
-    renderCard(newCard);
     handlerClosePopup(popupAddCard);
     formAddCard.reset();
 
