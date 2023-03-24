@@ -99,8 +99,8 @@ function handlerFormAddCardSubmit(evt) {
     handlerClosePopup(popupAddCard);
     formAddCard.reset();
 
-    const disableButtonPopup = new FormValidator(submitElement, validationOptions);
-    disableButtonPopup.disableButton();
+    // const disableButtonPopup = new FormValidator(submitElement, validationOptions);
+    // disableButtonPopup.disableButton();
 };
 
 

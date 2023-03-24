@@ -1,9 +1,9 @@
 class FormValidator {
-    constructor(submitButton, options) {
-        this._submitButton = submitButton;
+    constructor(formElement, options) {
+        this._formElement = formElement;
         this._options = options;
-        this._submitElement = document.querySelector(this._options.submitButtonSelector);
-        this._inputList = Array.from(this._submitButton.querySelectorAll(this._options.inputSelector));
+        this._submitButton = this._formElement.querySelector(this._options.submitButtonSelector);
+        this._inputList = Array.from(this._formElement.querySelectorAll(this._options.inputSelector));
     }
 
     _hiddenError = (errorElement) => {
@@ -34,7 +34,7 @@ class FormValidator {
 
     // Активация кнопки
     _enableButton = () => {
-        this._submitButton.removeAttribute('disabled');
+        this._submitButton.removeAttribute('disabled', false);
         this._submitButton.classList.remove(this._options.disabledButtonClass);
     };
 
@@ -60,10 +60,10 @@ class FormValidator {
         inputs.forEach(inputElement => {
             inputElement.addEventListener('input', () => {
                 this._toggleInputState(inputElement, this._options);
-                this._toggleButtonState(inputs, this._submitElement, this._options.disabledButtonClass);
+                this._toggleButtonState(inputs);
             });
         });
-        this._toggleButtonState(inputs, this._submitElement, this._options.disabledButtonClass);
+        this._toggleButtonState(inputs);
     };
 
     enableValidation = () => {
