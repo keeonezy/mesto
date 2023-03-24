@@ -11,11 +11,9 @@ const popupAddCard = document.querySelector(".popup__content_add-card");
 const popupShowCard = document.querySelector(".popup__content_show-image");
 const formEditProfile = document.forms.editProfile;
 const formAddCard = document.forms.addCard;
-const submitElement = formAddCard.querySelector(".popup__button");
 const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__subtitle");
 //Template
-const template = document.getElementById("card-li");
 const cardList = document.querySelector(".elements__list");
 // Инпуты
 const nameInput = document.querySelector(".popup__input_type_name");
@@ -96,11 +94,10 @@ function handlerFormAddCardSubmit(evt) {
 
     cardList.prepend(createCard(card));
 
+    addCardFormValidator.disableButton();
     handlerClosePopup(popupAddCard);
     formAddCard.reset();
 
-    // const disableButtonPopup = new FormValidator(submitElement, validationOptions);
-    // disableButtonPopup.disableButton();
 };
 
 

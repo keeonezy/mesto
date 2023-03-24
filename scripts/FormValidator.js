@@ -19,6 +19,18 @@ class FormValidator {
         inputElement.classList.remove(this._options.inputError);
     };
 
+    // Активация кнопки
+    _enableButton = () => {
+        this._submitButton.removeAttribute('disabled');
+        this._submitButton.classList.remove(this._options.disabledButtonClass);
+    };
+
+    // Деактивация кнопки
+    disableButton = () => {
+        this._submitButton.setAttribute('disabled', true);
+        this._submitButton.classList.add(this._options.disabledButtonClass);
+    };
+
     _setInputState = (inputElement, isValid) => {
         const inputSectionElement = inputElement.closest(this._options.inputSectionSelector);
         const errorElement = inputSectionElement.querySelector(this._options.inputErrorSelector);
@@ -31,19 +43,7 @@ class FormValidator {
 
     _toggleInputState = (inputElement) => {
         const isValid = inputElement.validity.valid;
-        this._setInputState(inputElement, isValid, this._options);
-    };
-
-    // Активация кнопки
-    _enableButton = () => {
-        this._submitButton.removeAttribute('disabled', false);
-        this._submitButton.classList.remove(this._options.disabledButtonClass);
-    };
-
-    // Деактивация кнопки
-    disableButton = () => {
-        this._submitButton.setAttribute('disabled', true);
-        this._submitButton.classList.add(this._options.disabledButtonClass);
+        this._setInputState(inputElement, isValid);
     };
 
     _toggleButtonState = (inputs) => {
@@ -61,7 +61,7 @@ class FormValidator {
 
         inputs.forEach(inputElement => {
             inputElement.addEventListener('input', () => {
-                this._toggleInputState(inputElement, this._options);
+                this._toggleInputState(inputElement);
                 this._toggleButtonState(inputs);
             });
         });
