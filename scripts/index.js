@@ -115,6 +115,7 @@ const validationOptions = {
     inputSectionSelector: ".popup__section", // Input + error
     disabledButtonClass: "popup__button_disabled", // Button состояния выключения
     inputErrorSelector: ".popup__error", // Error куда выводить
+    inputError: "popup__input_error", // Error линия
     inputErrorClass: "popup__error_active", // Error активация
 };
 

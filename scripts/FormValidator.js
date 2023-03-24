@@ -6,24 +6,26 @@ class FormValidator {
         this._inputList = Array.from(this._formElement.querySelectorAll(this._options.inputSelector));
     }
 
-    _hiddenError = (errorElement) => {
-        errorElement.innerText = '';
-        errorElement.classList.remove(this._options.inputErrorClass);
+    _showError = (errorElement, inputElement) => {
+        errorElement.innerText = inputElement.validationMessage;
+        errorElement.classList.add(this._options.inputErrorClass);
+        inputElement.classList.add(this._options.inputError);
+
     };
 
-    _showError = (errorElement, message) => {
-        errorElement.innerText = message;
-        errorElement.classList.add(this._options.inputErrorClass);
-
+    _hiddenError = (errorElement, inputElement) => {
+        errorElement.innerText = '';
+        errorElement.classList.remove(this._options.inputErrorClass);
+        inputElement.classList.remove(this._options.inputError);
     };
 
     _setInputState = (inputElement, isValid) => {
         const inputSectionElement = inputElement.closest(this._options.inputSectionSelector);
         const errorElement = inputSectionElement.querySelector(this._options.inputErrorSelector);
         if (isValid) {
-            this._hiddenError(errorElement, this._options.inputErrorClass);
+            this._hiddenError(errorElement, inputElement);
         } else {
-            this._showError(errorElement, inputElement.validationMessage, this._options.inputErrorClass);
+            this._showError(errorElement, inputElement);
         }
     };
 
