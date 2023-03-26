@@ -57,7 +57,7 @@ class FormValidator {
     };
 
     _setEventListeners = () => {
-        const inputs = Array.from(document.querySelectorAll(this._options.inputSelector));
+        const inputs = Array.from(this._formElement.querySelectorAll(this._options.inputSelector));
 
         inputs.forEach(inputElement => {
             inputElement.addEventListener('input', () => {
@@ -70,7 +70,7 @@ class FormValidator {
 
     enableValidation = () => {
         this._inputList.forEach(form => {
-            this._setEventListeners(form, this._options);
+            this._setEventListeners();
         });
     };
 }

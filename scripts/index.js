@@ -34,11 +34,9 @@ function handlerClosePopup(popupToClose) {
 // Закрытие попапа на крестик и за пределами формы
 popups.forEach((popup) => {
     popup.addEventListener("mousedown", (evt) => {
-        if (evt.target.classList.contains("popup_opened")) {
+        if (evt.target.classList.contains("popup_opened") || evt.target.classList.contains("popup__close")) {
             handlerClosePopup(popup);
-        } else if (evt.target.classList.contains("popup__close")) {
-            handlerClosePopup(popup);
-        };
+        }
     });
 
 });
