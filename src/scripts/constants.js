@@ -1,6 +1,3 @@
-// import { FormValidator } from "./FormValidator.js";
-// import { formAddCard } from "./index.js";
-
 const initialCards = [
     {
         name: "Москва",

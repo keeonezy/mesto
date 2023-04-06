@@ -1,6 +1,6 @@
-import { FormValidator } from "./FormValidator.js";
-import { Card } from "./Card.js";
-import { initialCards } from "./constants.js";
+import { FormValidator } from "../scripts/FormValidator.js";
+import { Card } from "../scripts/Card.js";
+import { initialCards } from "../scripts/constants.js";
 
 // Переменные основные
 const popups = document.querySelectorAll(".popup");
