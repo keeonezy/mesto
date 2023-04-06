@@ -1,27 +1,34 @@
+import moscow from '../../src/images/Moscow.jpg';
+import cappadocia from '../../src/images/Cappadocia.jpg';
+import orenburg from '../../src/images/Orenburg.jpg';
+import crete from '../../src/images/Crete.jpg';
+import saintPetersburg from '../../src/images/Saint-Petersburg.jpg';
+import phuket from '../../src/images/Phuket.jpg';
+
 const initialCards = [
     {
         name: "Москва",
-        link: "./images/Moscow.jpg"
+        link: moscow
     },
     {
         name: "Каппадокия",
-        link: "./images/Cappadocia.jpg"
+        link: cappadocia
     },
     {
         name: "Оренбург",
-        link: "./images/Orenburg.jpg"
+        link: orenburg
     },
     {
         name: "Остров Крит",
-        link: "./images/Crete.jpg"
+        link: crete
     },
     {
         name: "Санкт-Петербург",
-        link: "./images/Saint-Petersburg.jpg"
+        link: saintPetersburg
     },
     {
         name: "Пхукет",
-        link: "./images/Phuket.jpg"
+        link: phuket
     }
 ];
 
