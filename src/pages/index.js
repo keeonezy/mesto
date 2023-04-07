@@ -1,7 +1,7 @@
 import "./index.css";
-import { FormValidator } from "../scripts/FormValidator.js";
-import { Card } from "../scripts/Card.js";
-import { initialCards } from "../scripts/constants.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { Card } from "../components/Card.js";
+import { initialCards } from "../components/constants.js";
 
 // Переменные основные
 const popups = document.querySelectorAll(".popup");
