@@ -1,10 +1,14 @@
 import "./index.css";
-import { FormValidator } from "../components/FormValidator.js";
 import { Card } from "../components/Card.js";
 import { initialCards } from "../components/constants.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { Popup } from "../components/Popup";
+import { PopupWithImage } from "../components/PopupWithImage";
+import { PopupWithForm } from "../components/PopupWithForm";
+import { Section } from "../components/Section";
+import { UserInfo } from "../components/UserInfo";
 
 // Переменные основные
-const popups = document.querySelectorAll(".popup");
 const buttonEditProfile = document.querySelector(".profile__button-edit");
 const buttonAddCard = document.querySelector(".profile__button-add");
 const popupEditProfile = document.querySelector(".popup_type_profile");
@@ -20,35 +24,7 @@ const cardList = document.querySelector(".elements__list");
 const nameInput = document.querySelector(".popup__input_type_name");
 const jobInput = document.querySelector(".popup__input_type_job");
 
-// Функция открытия попапа
-function openPopup(popup) {
-    popup.classList.add("popup_opened");
-    document.addEventListener("keydown", handlerKeyEscape);
-};
 
-// Функция закрытия попапа универсальная
-function handlerClosePopup(popupToClose) {
-    popupToClose.classList.remove("popup_opened");
-    document.removeEventListener("keydown", handlerKeyEscape);
-};
-
-// Закрытие попапа на крестик и за пределами формы
-popups.forEach((popup) => {
-    popup.addEventListener("mousedown", (evt) => {
-        if (evt.target.classList.contains("popup_opened") || evt.target.classList.contains("popup__close")) {
-            handlerClosePopup(popup);
-        }
-    });
-
-});
-
-// Закрытие попапа через кнопку ESQ
-function handlerKeyEscape(evt) {
-    if (evt.key === "Escape") {
-        const openedPopup = document.querySelector(".popup_opened");
-        handlerClosePopup(openedPopup);
-    }
-}
 
 // Popup открытие для редактирования профиля
 buttonEditProfile.addEventListener("click", function () {
@@ -70,10 +46,16 @@ buttonAddCard.addEventListener("click", function () {
     openPopup(popupAddCard);
 });
 
-function createCard(card) {
-    const newCard = new Card(card, '.card-li', openPopup).createCard();
-    return newCard
+// Создаем карточку с помощью класса
+const createCard = (card) => {
+    const newCard = new Card(card, '.card-li', () => popupWithImage.open(card));
+    cardList.addItem(newCard.createElement());
 }
+
+// function createCard(card) {
+//     const newCard = new Card(card, '.card-li', openPopup).createCard();
+//     return newCard
+// }
 
 // Показываем карточки
 initialCards.forEach(card => {
@@ -118,4 +100,4 @@ const validationOptions = {
 const addCardFormValidator = new FormValidator(formAddCard, validationOptions);
 addCardFormValidator.enableValidation();
 
-export { formAddCard, popupShowCard, openPopup };
+export { formAddCard, popupShowCard };
