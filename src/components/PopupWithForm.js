@@ -1,7 +1,19 @@
 import { Popup } from "./Popup";
 
 class PopupWithForm extends Popup {
-    constructor() {
+    constructor(popupSelector) {
+        super(popupSelector);
+    }
+
+    _getInputValues() {
+
+    }
+
+    setEventListeners() {
+
+    }
+
+    close() {
 
     }
 }

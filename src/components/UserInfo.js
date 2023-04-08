@@ -1,5 +1,13 @@
 class UserInfo {
-    constructor() {
+    constructor({ profileSelector, jobSelector }) {
+
+    }
+
+    getUserInfo() {
+
+    }
+
+    setUserInfo() {
 
     }
 }
