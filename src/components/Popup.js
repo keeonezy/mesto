@@ -1,6 +1,7 @@
 class Popup {
     constructor(popupSelector) {
-        this._popupSelector = document.querySelector(popupSelector);
+        this._popupElement = document.querySelector(popupSelector);
+        this._popupClose = this._popupElement.querySelector(".popup__close");
     }
 
     _handleEscClose(evt) {
@@ -10,17 +11,17 @@ class Popup {
     }
 
     open() {
-        this._popupSelector.classList.add("popup_opened");
+        this._popupElement.classList.add("popup_opened");
         document.addEventListener("keydown", this._handleEscClose);
     }
 
     close() {
-        this._popupSelector.classList.remove("popup_opened");
+        this._popupElement.classList.remove("popup_opened");
         document.removeEventListener("keydown", this._handleEscClose);
     }
 
     setEventListeners(evt) {
-        if (evt.target.classList.contains("popup_opened") || evt.target.classList.contains("popup__close")) {
+        if (evt.target.classList.contains("popup_opened") || this._popupClose) {
             this.close();
         }
     }
