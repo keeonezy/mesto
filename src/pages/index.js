@@ -51,7 +51,6 @@ function handlerClosePopup(popupToClose) {
 //         }
 //     });
 
-
 // });
 
 // Закрытие попапа через кнопку ESQ
@@ -141,6 +140,8 @@ const validationOptions = {
 
 const addCardFormValidator = new FormValidator(cardAddForm, validationOptions);
 addCardFormValidator.enableValidation();
+const ProfileValidator = new FormValidator(profileForm, validationOptions);
+ProfileValidator.enableValidation();
 
 // const popupыs = new Popup(popup);
 
