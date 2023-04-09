@@ -28,12 +28,11 @@ class Popup {
     }
 
     setEventListeners() {
-        this._popupClose.addEventListener('click', () => {
+        this._popupClose.addEventListener("click", () => {
             this.close();
         });
 
-        this._popupElement.addEventListener('mousedown', this._handleOverlayClose)
-
+        this._popupElement.addEventListener("mousedown", this._handleOverlayClose)
     }
 
 }

@@ -14,20 +14,20 @@ class FormValidator {
     };
 
     _hiddenError = (errorElement, inputElement) => {
-        errorElement.innerText = '';
+        errorElement.innerText = "";
         errorElement.classList.remove(this._options.inputErrorClass);
         inputElement.classList.remove(this._options.inputError);
     };
 
     // Активация кнопки
     _enableButton = () => {
-        this._submitButton.removeAttribute('disabled');
+        this._submitButton.removeAttribute("disabled");
         this._submitButton.classList.remove(this._options.disabledButtonClass);
     };
 
     // Деактивация кнопки
     disableButton = () => {
-        this._submitButton.setAttribute('disabled', true);
+        this._submitButton.setAttribute("disabled", true);
         this._submitButton.classList.add(this._options.disabledButtonClass);
     };
 
@@ -60,7 +60,7 @@ class FormValidator {
         const inputs = Array.from(this._formElement.querySelectorAll(this._options.inputSelector));
 
         inputs.forEach(inputElement => {
-            inputElement.addEventListener('input', () => {
+            inputElement.addEventListener("input", () => {
                 this._toggleInputState(inputElement);
                 this._toggleButtonState(inputs);
             });

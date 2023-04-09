@@ -1,9 +1,9 @@
-import moscow from '../../src/images/Moscow.jpg';
-import cappadocia from '../../src/images/Cappadocia.jpg';
-import orenburg from '../../src/images/Orenburg.jpg';
-import crete from '../../src/images/Crete.jpg';
-import saintPetersburg from '../../src/images/Saint-Petersburg.jpg';
-import phuket from '../../src/images/Phuket.jpg';
+import moscow from "../../src/images/Moscow.jpg";
+import cappadocia from "../../src/images/Cappadocia.jpg";
+import orenburg from "../../src/images/Orenburg.jpg";
+import crete from "../../src/images/Crete.jpg";
+import saintPetersburg from "../../src/images/Saint-Petersburg.jpg";
+import phuket from "../../src/images/Phuket.jpg";
 
 const initialCards = [
     {
@@ -31,7 +31,5 @@ const initialCards = [
         link: phuket
     }
 ];
-
-
 
 export { initialCards };
