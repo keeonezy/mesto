@@ -9,7 +9,7 @@ class Section {
         this._containerSelector.prepend(item);
     }
 
-    rendererItems() {
+    generateCard() {
         this._items.forEach(this._renderer);
     }
 }

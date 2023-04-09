@@ -33,7 +33,7 @@ class Card {
         this._imageElement.addEventListener("click", () => this._handlerImageViewer());
     }
 
-    createCard() {
+    generateCard() {
         this._cardElement = this._getTemplate();
         this._likeButton = this._cardElement.querySelector(".card__like");
         this._deleteButton = this._cardElement.querySelector(".card__trash");

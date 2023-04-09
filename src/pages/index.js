@@ -44,14 +44,15 @@ function handlerClosePopup(popupToClose) {
 };
 
 // Закрытие попапа на крестик и за пределами формы
-// popups.forEach((popup) => {
-//     popup.addEventListener("mousedown", (evt) => {
-//         if (evt.target.classList.contains("popup_opened") || evt.target.classList.contains("popup__close")) {
-//             handlerClosePopup(popup);
-//         }
-//     });
+const popups = document.querySelectorAll(".popup");
+popups.forEach((popup) => {
+    popup.addEventListener("mousedown", (evt) => {
+        if (evt.target.classList.contains("popup_opened") || evt.target.classList.contains("popup__close")) {
+            handlerClosePopup(popup);
+        }
+    });
 
-// });
+});
 
 // Закрытие попапа через кнопку ESQ
 function handlerKeyEscape(evt) {
@@ -60,11 +61,6 @@ function handlerKeyEscape(evt) {
         handlerClosePopup(openedPopup);
     }
 }
-
-
-
-
-
 
 
 // Popup открытие для редактирования профиля
@@ -87,20 +83,23 @@ cardAddButton.addEventListener("click", function () {
     openPopup(popupAddCard);
 });
 
-// Создаем карточку с помощью класса
-// const createCard = (card) => {
-//     const newCard = new Card(card, '.card-li', () => popupWithImage.open(card));
-//     cardList.addItem(newCard.createElement());
-// }
 
-function createCard(card) {
-    const newCard = new Card(card, '.card-li', openPopup).createCard();
-    return newCard
-}
+const openPopupImage = new PopupWithImage(".popup_type_image");
+
+const createCard = (data) => {
+    const card = new Card(data,
+        '.card-li',
+        () => {
+            openPopupImage.open(data);
+        });
+    return card.generateCard();
+};
+
+openPopupImage.setEventListeners();
 
 // Показываем карточки
-initialCards.forEach(card => {
-    cardList.prepend(createCard(card));
+initialCards.forEach(data => {
+    cardList.prepend(createCard(data));
 });
 
 // Добавление новой карточки
@@ -142,7 +141,5 @@ const addCardFormValidator = new FormValidator(cardAddForm, validationOptions);
 addCardFormValidator.enableValidation();
 const ProfileValidator = new FormValidator(profileForm, validationOptions);
 ProfileValidator.enableValidation();
-
-// const popupыs = new Popup(popup);
 
 export { cardAddForm, popupShowCard, openPopup };
