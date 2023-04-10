@@ -20,43 +20,6 @@ const nameInput = document.querySelector(".popup__input_type_name");
 const jobInput = document.querySelector(".popup__input_type_job");
 
 
-
-// Информация о профиле
-const userInfo = new UserInfo({
-    userName: ".profile__title",
-    userJob: ".profile__subtitle"
-})
-
-// Редактирования профиля в попапе
-const formProfile = new PopupWithForm(".popup_type_profile", {
-    submitForm: (element) => {
-        userInfo.setUserInfo(element)
-    }
-})
-
-profileEditButton.addEventListener("click", () => {
-    formProfile.open()
-
-    formProfile.showInputValues(userInfo.getUserInfo())
-})
-
-// Добавляем новую карточку в попапе
-const addCardPopup = new PopupWithForm(".popup_type_card", {
-    submitForm: ({ name, link }) => {
-        cardContainer.addItem(createCard({
-            name: name,
-            link: link,
-            alt: name
-        }))
-    }
-})
-
-
-cardAddButton.addEventListener("click", () => {
-    addCardPopup.open()
-})
-
-
 // Работа с template
 const openPopupImage = new PopupWithImage(".popup_type_image");
 
@@ -69,6 +32,7 @@ const createCard = (data) => {
     return card.generateCard();
 };
 
+
 // Загружаем рендер карточек
 const cardContainer = new Section({
     renderer: (card) => {
@@ -77,6 +41,44 @@ const cardContainer = new Section({
 }, ".elements__list")
 
 cardContainer.renderItems(initialCards);
+
+
+// Информация о профиле
+const userInfo = new UserInfo({
+    userName: ".profile__title",
+    userJob: ".profile__subtitle"
+})
+
+
+// Редактирования профиля в попапе
+const formProfile = new PopupWithForm('.popup_type_profile', {
+    submitForm: ({ userName, userJob }) => {
+        userInfo.setUserInfo({ userName, userJob })
+    }
+})
+
+profileEditButton.addEventListener("click", () => {
+    formProfile.open()
+
+    formProfile.showInputValues(userInfo.getUserInfo())
+})
+
+
+// Добавляем новую карточку в попапе
+const addCardPopup = new PopupWithForm(".popup_type_card", {
+    submitForm: ({ name, link }) => {
+        cardContainer.addItem(createCard({
+            name: name,
+            link: link,
+            alt: name
+        }))
+    }
+})
+
+cardAddButton.addEventListener("click", () => {
+    addCardPopup.open()
+})
+
 
 // Получения данных для API
 const validationOptions = {

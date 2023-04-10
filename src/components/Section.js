@@ -4,7 +4,6 @@ class Section {
         this._container = document.querySelector(containerSelector);
     }
 
-
     addItem(card) {
         this._container.prepend(card)
     }
