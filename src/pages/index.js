@@ -52,8 +52,8 @@ const userInfo = new UserInfo({
 
 // Редактирования профиля в попапе
 const formProfile = new PopupWithForm('.popup_type_profile', {
-    submitForm: ({ userName, userJob }) => {
-        userInfo.setUserInfo({ userName, userJob })
+    submitForm: ({ name, about }) => {
+        userInfo.setUserInfo({ name, about })
     }
 })
 
