@@ -59,6 +59,7 @@ const formProfile = new PopupWithForm(".popup_type_profile", {
 
 profileEditButton.addEventListener("click", () => {
     formProfile.open()
+    ProfileValidator.disableButton();
 
     formProfile.showInputValues(userInfo.getUserInfo())
 })
@@ -77,6 +78,7 @@ const addCardPopup = new PopupWithForm(".popup_type_card", {
 
 cardAddButton.addEventListener("click", () => {
     addCardPopup.open()
+    addCardFormValidator.disableButton();
 })
 
 
