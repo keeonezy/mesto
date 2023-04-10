@@ -46,12 +46,12 @@ cardContainer.renderItems(initialCards);
 // Информация о профиле
 const userInfo = new UserInfo({
     userName: ".profile__title",
-    userJob: ".profile__subtitle"
+    userAbout: ".profile__about"
 })
 
 
 // Редактирования профиля в попапе
-const formProfile = new PopupWithForm('.popup_type_profile', {
+const formProfile = new PopupWithForm(".popup_type_profile", {
     submitForm: ({ name, about }) => {
         userInfo.setUserInfo({ name, about })
     }

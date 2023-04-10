@@ -4,7 +4,7 @@
     display: grid;
     grid-template-areas:
         "title button-edit"
-        "subtitle subtitle";
+        "about about";
     gap: 8px 18px;
 }
 
