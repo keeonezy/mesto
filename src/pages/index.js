@@ -7,6 +7,7 @@ import { PopupWithImage } from "../components/PopupWithImage";
 import { PopupWithForm } from "../components/PopupWithForm";
 import { Section } from "../components/Section";
 import { UserInfo } from "../components/UserInfo";
+import { Api } from "../components/Api";
 
 // Кнопки
 const profileEditButton = document.querySelector(".profile__button-edit");
