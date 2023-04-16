@@ -59,9 +59,9 @@ const formProfile = new PopupWithForm(".popup_type_profile", {
 
 profileEditButton.addEventListener("click", () => {
     formProfile.open()
-    ProfileValidator.disableButton();
+    profileValidator.disableButton();
 
-    formProfile.showInputValues(userInfo.getUserInfo())
+    formProfile.setInputValues(userInfo.getUserInfo())
 })
 
 
@@ -96,8 +96,8 @@ const validationOptions = {
 
 const addCardFormValidator = new FormValidator(cardAddForm, validationOptions);
 addCardFormValidator.enableValidation();
-const ProfileValidator = new FormValidator(profileForm, validationOptions);
-ProfileValidator.enableValidation();
+const profileValidator = new FormValidator(profileForm, validationOptions);
+profileValidator.enableValidation();
 
 
 formProfile.setEventListeners();
