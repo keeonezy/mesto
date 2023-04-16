@@ -1,5 +1,5 @@
 .card__like {
-    margin-left: auto;
+    margin-bottom: 3px;
     background: url(../../../images/icon/like-off.svg);
     cursor: pointer;
     width: 22px;
