@@ -18,7 +18,11 @@
         <main class="main">
 
             <section class="profile">
-                <img src="<%=require('./images/Avatar.jpg')%>" alt="Фотография пользователя" class="profile__avatar">
+                <div class="profile__avatar-container">
+                    <img src="<%=require('./images/Avatar.jpg')%>" alt="Фотография пользователя"
+                        class="profile__avatar">
+                    <button class="profile__button-change"></button>
+                </div>
                 <div class="profile__info">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <p class="profile__about">Исследователь океана</p>
@@ -78,7 +82,7 @@
         </div>
 
         <div class="popup popup_type_avatar">
-            <div class="popup__group">
+            <div class="popup__group popup__group-avatar">
                 <button class="popup__close" type="button"></button>
                 <h2 class="popup__title">Обновить аватар</h2>
                 <form class="popup__form" name="changeAvatar" novalidate>
@@ -119,7 +123,7 @@
             <div class="card__info">
                 <h2 class="card__title"></h2>
 
-                <div class="card-container-like">
+                <div class="card__like-container">
                     <button class="card__like" type="button"></button>
                     <p class="card__like-number">0</p>
                 </div>

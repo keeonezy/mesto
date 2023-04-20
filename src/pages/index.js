@@ -16,9 +16,16 @@ const cardAddButton = document.querySelector(".profile__button-add");
 // Формы
 const profileForm = document.forms.editProfile;
 const cardAddForm = document.forms.addCard;
+const changeAvatarForm = document.forms.changeAvatar;
 
-const nameInput = document.querySelector(".popup__input_type_name");
-const jobInput = document.querySelector(".popup__input_type_job");
+
+const api = new Api({
+    baseUrl: "https://mesto.nomoreparties.co/v1/cohort-64",
+    headers: {
+        authorization: "2b912826-2e01-41bd-a2c8-a9cb197269a0",
+        "Content-Type": "application/json"
+    }
+});
 
 
 // Работа с template
@@ -99,6 +106,8 @@ const addCardFormValidator = new FormValidator(cardAddForm, validationOptions);
 addCardFormValidator.enableValidation();
 const profileValidator = new FormValidator(profileForm, validationOptions);
 profileValidator.enableValidation();
+const changeAvatarValidator = new FormValidator(changeAvatarForm, validationOptions);
+changeAvatarValidator.enableValidation();
 
 
 formProfile.setEventListeners();
