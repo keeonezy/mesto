@@ -2,6 +2,7 @@ class Card {
     constructor(data, templateSelector, handleCardClick) {
         this._name = data.name;
         this._link = data.link;
+        this._likes = data.likes;
         this._templateSelector = templateSelector;
         this._handleCardClick = handleCardClick;
     }
@@ -28,6 +29,7 @@ class Card {
     generateCard() {
         this._cardElement = this._getTemplate();
         this._likeButton = this._cardElement.querySelector(".card__like");
+        this._likeCounter = this._cardElement.querySelector(".card__like-number");
         this._deleteButton = this._cardElement.querySelector(".card__trash");
         this._imageElement = this._cardElement.querySelector(".card__image");
         this._titleCard = this._cardElement.querySelector(".card__title");
@@ -35,6 +37,7 @@ class Card {
         this._imageElement.src = this._link;
         this._imageElement.alt = this._name;
         this._titleCard.textContent = this._name;
+        // this._likeCounter.textContent = this._likes.length;
 
         this._setEventListeners();
 
