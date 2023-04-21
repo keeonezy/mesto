@@ -45,7 +45,7 @@ const createCard = (data) => {
             handleTrashCard: () => {
                 deletePopup.open();
                 deletePopup.setSubmit(() => {
-                    deletePopup.renderLoadingDelete(true);
+                    deletePopup.renderLoading(true);
                     api.deleteCard(data._id)
                         .then(() => {
                             card.deleteCard(),
@@ -55,11 +55,9 @@ const createCard = (data) => {
                             console.log(`Ошибка: ${err}`);
                         })
                         .finally(() => {
-                            deletePopup.renderLoadingDelete(false);
+                            deletePopup.renderLoading(false);
                         })
                 })
-                // console.log(api.deleteCard(data._id));
-                // console.log(card.deleteCard());
             },
             handleSetLike: () => {
                 api.setlike(data._id)
@@ -120,8 +118,8 @@ const avatarChange = new PopupWithForm(".popup_type_avatar", {
     submitForm: ({ link }) => {
         avatarChange.renderLoading(true);
         api.editUserAvatar({ link })
-            .then(({ link }) => {
-                userInfo.setUserAvatar({ link });
+            .then((data) => {
+                userInfo.setUserAvatar(data);
                 avatarChange.close();
             })
             .catch((err) => {
@@ -144,8 +142,8 @@ const formProfile = new PopupWithForm(".popup_type_profile", {
     submitForm: ({ name, about }) => {
         formProfile.renderLoading(true);
         api.editUserInfo({ name, about })
-            .then(({ name, about }) => {
-                userInfo.setUserInfo({ name, about });
+            .then((data) => {
+                userInfo.setUserInfo(data);
                 formProfile.close();
             })
             .catch((err) => {
@@ -170,12 +168,8 @@ const addCardPopup = new PopupWithForm(".popup_type_card", {
     submitForm: ({ name, link }) => {
         addCardPopup.renderLoading(true);
         api.addNewCard({ name, link })
-            .then(({ name, link }) => {
-                cardContainer.addItem(createCard({
-                    name: name,
-                    link: link,
-                    alt: name
-                }))
+            .then((data) => {
+                cardContainer.addItem(createCard(data))
                 addCardPopup.close();
             })
             .catch((err) => {

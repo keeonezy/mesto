@@ -1,4 +1,4 @@
-import { Popup } from "./Popup";
+import { Popup } from "./Popup.js";
 
 class PopupDelete extends Popup {
     constructor(popupSelector) {
@@ -13,12 +13,13 @@ class PopupDelete extends Popup {
 
     setEventListeners() {
         super.setEventListeners();
-        this._submitButton.addEventListener("click", () => {
+        this._submitButton.addEventListener("click", (evt) => {
+            evt.preventDefault();
             this._handleSubmit();
         })
     }
 
-    renderLoadingDelete(isLoading) {
+    renderLoading(isLoading) {
         if (isLoading) {
             this._submitButton.textContent = "Удаление..."
         } else {
