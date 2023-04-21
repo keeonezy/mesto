@@ -34,15 +34,17 @@ const api = new Api({
 // Работа с template
 const openPopupImage = new PopupWithImage(".popup_type_image");
 
+
+
 const createCard = (data) => {
     const card = new Card(data,
         ".card-li",
         () => {
             openPopupImage.open(data);
         },
+        userId,
         {
-            userId,
-            handleTrashButtonDelete: () => {
+            _handlerDeleteButton: () => {
                 deletePopup.setSubmit(() => {
                     deletePopup.renderLoadingDelete(true);
                     api.deleteCard(data._id)
@@ -59,7 +61,7 @@ const createCard = (data) => {
                 })
                 deletePopup.open();
             },
-            handleSetLike: () => {
+            _handlerLikeButton: () => {
                 api.setlike(data._id)
                     .then((data) => {
                         card.handleLikeCard(data);
@@ -68,7 +70,7 @@ const createCard = (data) => {
                         console.log(`Ошибка: ${err}`);
                     })
             },
-            handleRemoveLike: () => {
+            _handlerLikeButton: () => {
                 api.deleteLike(data._id)
                     .then((data) => {
                         card.handleLikeCard(data);
@@ -82,7 +84,6 @@ const createCard = (data) => {
 
     return cardElement;
 }
-
 
 // Загружаем рендер карточек
 const cardContainer = new Section({
@@ -101,7 +102,7 @@ const userInfo = new UserInfo({
 
 
 // Получаем данные о пользователях по API
-let userId;
+let userId = "7fa4eb688abb7916acebe251";
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
     .then(([initialCards, userData]) => {
