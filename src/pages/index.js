@@ -1,5 +1,5 @@
 import "./index.css";
-import { profileEditButton, cardAddButton, avatarAddButton, profileForm, cardAddForm, changeAvatarForm, validationOptions, initialCards } from "../utils/constants.js"
+import { profileEditButton, cardAddButton, avatarAddButton, validationOptions, initialCards } from "../utils/constants.js"
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Popup } from "../components/Popup.js";
@@ -123,7 +123,7 @@ const avatarChange = new PopupWithForm(".popup_type_avatar", {
 
 avatarAddButton.addEventListener("click", () => {
     avatarChange.open()
-    changeAvatarValidator.disableButton();
+    formValidators['changeAvatar'].disableButton();
 });
 
 
@@ -147,7 +147,7 @@ const formProfile = new PopupWithForm(".popup_type_profile", {
 
 profileEditButton.addEventListener("click", () => {
     formProfile.open()
-    profileValidator.disableButton();
+    formValidators['editProfile'].disableButton();
 
     formProfile.setInputValues(userInfo.getUserInfo())
 })
@@ -173,19 +173,28 @@ const addCardPopup = new PopupWithForm(".popup_type_card", {
 
 cardAddButton.addEventListener("click", () => {
     addCardPopup.open()
-    addCardFormValidator.disableButton();
+    formValidators['addCard'].disableButton();
 })
 
 
 // Попап для удаления карточек
 const deletePopup = new PopupDelete(".popup_type_enter");
 
-const addCardFormValidator = new FormValidator(cardAddForm, validationOptions);
-addCardFormValidator.enableValidation();
-const profileValidator = new FormValidator(profileForm, validationOptions);
-profileValidator.enableValidation();
-const changeAvatarValidator = new FormValidator(changeAvatarForm, validationOptions);
-changeAvatarValidator.enableValidation();
+
+const formValidators = {}
+
+// Включение валидации
+const enableValidation = (config) => {
+    const formList = Array.from(document.querySelectorAll(config.formSelector))
+    formList.forEach((formElement) => {
+        const validator = new FormValidator(formElement, config)
+        const formName = formElement.getAttribute('name')
+        formValidators[formName] = validator;
+        validator.enableValidation();
+    });
+};
+
+enableValidation(validationOptions);
 
 
 deletePopup.setEventListeners();

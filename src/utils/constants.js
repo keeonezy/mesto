@@ -37,11 +37,6 @@ const profileEditButton = document.querySelector(".profile__button-edit");
 const cardAddButton = document.querySelector(".profile__button-add");
 const avatarAddButton = document.querySelector(".profile__button-change");
 
-// Формы
-const profileForm = document.forms.editProfile;
-const cardAddForm = document.forms.addCard;
-const changeAvatarForm = document.forms.changeAvatar;
-
 // Получения данных для API валидации
 const validationOptions = {
     formSelector: ".popup__form", // Form класс
@@ -54,4 +49,4 @@ const validationOptions = {
     inputErrorClass: "popup__error_active", // Error активация
 };
 
-export { profileEditButton, cardAddButton, avatarAddButton, profileForm, cardAddForm, changeAvatarForm, validationOptions, initialCards }
+export { profileEditButton, cardAddButton, avatarAddButton, validationOptions, initialCards }
