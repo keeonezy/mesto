@@ -1,6 +1,6 @@
 import "./index.css";
+import { profileEditButton, cardAddButton, avatarAddButton, profileForm, cardAddForm, changeAvatarForm, validationOptions, initialCards } from "../utils/constants.js"
 import { Card } from "../components/Card.js";
-import { initialCards } from "../components/constants.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Popup } from "../components/Popup.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
@@ -9,16 +9,6 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 import { Section } from "../components/Section.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { Api } from "../components/Api.js";
-
-// Кнопки
-const profileEditButton = document.querySelector(".profile__button-edit");
-const cardAddButton = document.querySelector(".profile__button-add");
-const avatarAddButton = document.querySelector(".profile__button-change");
-
-// Формы
-const profileForm = document.forms.editProfile;
-const cardAddForm = document.forms.addCard;
-const changeAvatarForm = document.forms.changeAvatar;
 
 
 // Данные для получения доступа к API предоставленный практикумом
@@ -189,19 +179,6 @@ cardAddButton.addEventListener("click", () => {
 
 // Попап для удаления карточек
 const deletePopup = new PopupDelete(".popup_type_enter");
-
-
-// Получения данных для API валидации
-const validationOptions = {
-    formSelector: ".popup__form", // Form класс
-    inputSelector: ".popup__input", // Input класс
-    submitButtonSelector: ".popup__button", // Button класс
-    inputSectionSelector: ".popup__section", // Input + error
-    disabledButtonClass: "popup__button_disabled", // Button состояния выключения
-    inputErrorSelector: ".popup__error", // Error куда выводить
-    inputError: "popup__input_error", // Error линия
-    inputErrorClass: "popup__error_active", // Error активация
-};
 
 const addCardFormValidator = new FormValidator(cardAddForm, validationOptions);
 addCardFormValidator.enableValidation();
