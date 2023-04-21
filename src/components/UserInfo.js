@@ -8,17 +8,17 @@ class UserInfo {
     getUserInfo() {
         return {
             name: this._userNameElement.textContent,
-            about: this._userAboutElement.textContent
+            about: this._userAboutElement.textContent,
+            userId: this._userId,
         };
     }
 
-    setUserInfo({ name, about }) {
+    setUserInfo({ name, about, _id, avatar }) {
         this._userNameElement.textContent = name;
         this._userAboutElement.textContent = about;
-    }
-
-    setUserAvatar({ avatar }) {
+        this._userId = _id;
         this._userAvatarElement.src = avatar;
+
     }
 
 }

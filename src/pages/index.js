@@ -95,7 +95,7 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
     .then(([initialCards, userData]) => {
         userId = userData._id;
         userInfo.setUserInfo(userData);
-        userInfo.setUserAvatar(userData);
+        userInfo.setUserInfo(userData);
         cardContainer.renderItems(initialCards);
     })
     .catch((err) => {
@@ -109,7 +109,7 @@ const avatarChange = new PopupWithForm(".popup_type_avatar", {
         avatarChange.renderLoading(true);
         api.editUserAvatar({ avatarInput })
             .then((data) => {
-                userInfo.setUserAvatar(data);
+                userInfo.setUserInfo(data);
                 avatarChange.close();
             })
             .catch((err) => {
