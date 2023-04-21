@@ -21,7 +21,7 @@ const cardAddForm = document.forms.addCard;
 const changeAvatarForm = document.forms.changeAvatar;
 
 
-// Данные для получения доступа к API
+// Данные для получения доступа к API предоставленный практикумом
 const api = new Api({
     baseUrl: "https://mesto.nomoreparties.co/v1/cohort-64",
     headers: {
@@ -186,11 +186,12 @@ cardAddButton.addEventListener("click", () => {
     addCardFormValidator.disableButton();
 })
 
+
+// Попап для удаления карточек
 const deletePopup = new PopupDelete(".popup_type_enter");
-deletePopup.setEventListeners();
 
 
-// Получения данных для API
+// Получения данных для API валидации
 const validationOptions = {
     formSelector: ".popup__form", // Form класс
     inputSelector: ".popup__input", // Input класс
@@ -210,6 +211,7 @@ const changeAvatarValidator = new FormValidator(changeAvatarForm, validationOpti
 changeAvatarValidator.enableValidation();
 
 
+deletePopup.setEventListeners();
 avatarChange.setEventListeners();
 formProfile.setEventListeners();
 addCardPopup.setEventListeners();
