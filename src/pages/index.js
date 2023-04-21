@@ -2,13 +2,13 @@ import "./index.css";
 import { Card } from "../components/Card.js";
 import { initialCards } from "../components/constants.js";
 import { FormValidator } from "../components/FormValidator.js";
-import { Popup } from "../components/Popup";
-import { PopupWithImage } from "../components/PopupWithImage";
-import { PopupDelete } from "../components/PopupDelete";
-import { PopupWithForm } from "../components/PopupWithForm";
-import { Section } from "../components/Section";
-import { UserInfo } from "../components/UserInfo";
-import { Api } from "../components/Api";
+import { Popup } from "../components/Popup.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { PopupDelete } from "../components/PopupDelete.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
+import { Section } from "../components/Section.js";
+import { UserInfo } from "../components/UserInfo.js";
+import { Api } from "../components/Api.js";
 
 // Кнопки
 const profileEditButton = document.querySelector(".profile__button-edit");
