@@ -1,5 +1,5 @@
 class Card {
-    constructor(data, templateSelector, handleCardClick, userId) {
+    constructor(data, templateSelector, handleCardClick, userId, { handleTrashCard, handleSetLike, handleRemoveLike }) {
         this._name = data.name;
         this._link = data.link;
         this._likes = data.likes;
@@ -8,6 +8,10 @@ class Card {
 
         this._templateSelector = templateSelector;
         this._handleCardClick = handleCardClick;
+
+        this._handleTrashCard = handleTrashCard;
+        this._handleSetLike = handleSetLike;
+        this._handleRemoveLike = handleRemoveLike;
     }
 
     _getTemplate() {
@@ -15,18 +19,27 @@ class Card {
         return newCard;
     }
 
-    _handlerLikeButton() {
+    handleLikeCard(data) {
+        this._likes = data.likes;
+        this._likesCounter.textContent = this._likes.length;
         this._likeButton.classList.toggle("card__like_active");
     }
 
-    _handlerDeleteButton() {
-        this._cardElement.remove();
+    _setEventListeners() {
+        this._likeButton.addEventListener("click", () => {
+            if (this._likeButton.classList.contains("card__like_active")) {
+                this._handleRemoveLike();
+            } else {
+                this._handleSetLike();
+            }
+        });
+        this._deleteButton.addEventListener("click", () => this._handleTrashCard());
+        this._imageElement.addEventListener("click", () => this._handleCardClick(this._name, this._link));
     }
 
-    _setEventListeners() {
-        this._likeButton.addEventListener("click", () => this._handlerLikeButton());
-        this._deleteButton.addEventListener("click", () => this._handlerDeleteButton());
-        this._imageElement.addEventListener("click", () => this._handleCardClick(this._name, this._link));
+    // Удалить карточку
+    deleteCard() {
+        this._cardElement.remove();
     }
 
     // Проверяем владельца API на разрешение удаления
@@ -36,6 +49,7 @@ class Card {
         }
     }
 
+    // Проверить стоит ли лайк на карточке
     _checkLikeCard() {
         if (this._likes.find((user) =>
             this._userId === user._id
@@ -47,7 +61,7 @@ class Card {
     generateCard() {
         this._cardElement = this._getTemplate();
         this._likeButton = this._cardElement.querySelector(".card__like");
-        this._likeCounter = this._cardElement.querySelector(".card__like-number");
+        this._likesCounter = this._cardElement.querySelector(".card__like-number");
         this._deleteButton = this._cardElement.querySelector(".card__trash");
         this._imageElement = this._cardElement.querySelector(".card__image");
         this._titleCard = this._cardElement.querySelector(".card__title");
@@ -55,7 +69,7 @@ class Card {
         this._imageElement.src = this._link;
         this._imageElement.alt = this._name;
         this._titleCard.textContent = this._name;
-        this._likeCounter.textContent = this._likes.length;
+        this._likesCounter.textContent = this._likes.length;
 
         this._checkLikeCard();
         this._checkOwner();

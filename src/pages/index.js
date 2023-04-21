@@ -34,8 +34,6 @@ const api = new Api({
 // Работа с template
 const openPopupImage = new PopupWithImage(".popup_type_image");
 
-
-
 const createCard = (data) => {
     const card = new Card(data,
         ".card-li",
@@ -44,7 +42,8 @@ const createCard = (data) => {
         },
         userId,
         {
-            _handlerDeleteButton: () => {
+            handleTrashCard: () => {
+                deletePopup.open();
                 deletePopup.setSubmit(() => {
                     deletePopup.renderLoadingDelete(true);
                     api.deleteCard(data._id)
@@ -59,9 +58,10 @@ const createCard = (data) => {
                             deletePopup.renderLoadingDelete(false);
                         })
                 })
-                deletePopup.open();
+                // console.log(api.deleteCard(data._id));
+                // console.log(card.deleteCard());
             },
-            _handlerLikeButton: () => {
+            handleSetLike: () => {
                 api.setlike(data._id)
                     .then((data) => {
                         card.handleLikeCard(data);
@@ -70,7 +70,7 @@ const createCard = (data) => {
                         console.log(`Ошибка: ${err}`);
                     })
             },
-            _handlerLikeButton: () => {
+            handleRemoveLike: () => {
                 api.deleteLike(data._id)
                     .then((data) => {
                         card.handleLikeCard(data);
@@ -80,9 +80,8 @@ const createCard = (data) => {
                     })
             }
         });
-    const cardElement = card.generateCard();
 
-    return cardElement;
+    return card.generateCard();
 }
 
 // Загружаем рендер карточек
@@ -102,7 +101,7 @@ const userInfo = new UserInfo({
 
 
 // Получаем данные о пользователях по API
-let userId = "7fa4eb688abb7916acebe251";
+let userId;
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
     .then(([initialCards, userData]) => {
@@ -193,7 +192,7 @@ cardAddButton.addEventListener("click", () => {
     addCardFormValidator.disableButton();
 })
 
-const deletePopup = new PopupDelete('.popup_type_enter');
+const deletePopup = new PopupDelete(".popup_type_enter");
 deletePopup.setEventListeners();
 
 
