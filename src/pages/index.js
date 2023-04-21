@@ -115,9 +115,9 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
 
 // Меняем аватар пользователя в попапе
 const avatarChange = new PopupWithForm(".popup_type_avatar", {
-    submitForm: ({ link }) => {
+    submitForm: ({ avatarInput }) => {
         avatarChange.renderLoading(true);
-        api.editUserAvatar({ link })
+        api.editUserAvatar({ avatarInput })
             .then((data) => {
                 userInfo.setUserAvatar(data);
                 avatarChange.close();
