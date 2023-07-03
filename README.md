@@ -9,7 +9,6 @@
 
 * HTML, CSS, BEM, GIT, JavaScript(ООП, ES6 Modules), Webpack, Api
 
-
 **Gh pages**
 
 https://keeonezy.github.io/mesto/index.html
