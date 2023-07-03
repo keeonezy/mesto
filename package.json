@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/keeonezy/mesto/issues"
   },
-  "homepage": "https://github.com/keeonezy/mesto#readme",
+  "homepage": "https://keeonezy.github.io/mesto/",
   "devDependencies": {
     "@babel/core": "^7.21.4",
     "@babel/preset-env": "^7.21.4",
